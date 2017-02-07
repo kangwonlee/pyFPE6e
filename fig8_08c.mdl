@@ -1,0 +1,419 @@
+Model {
+  Name			  "fig8_08c"
+  Version		  4.00
+  SampleTimeColors	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  BlockNameDataTip	  off
+  BlockParametersDataTip  on
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks on
+  BrowserLookUnderMasks	  off
+  Created		  "Wed Sep 13 12:58:22 2000"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "J. David Powell"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Sat Nov 12 13:47:35 2005"
+  ModelVersionFormat	  "1.%<AutoIncrement:28>"
+  ConfigurationManager	  "none"
+  SimParamPage		  "WorkspaceI/O"
+  StartTime		  "0.0"
+  StopTime		  "2"
+  SolverMode		  "SingleTasking"
+  Solver		  "ode45"
+  RelTol		  "1e-3"
+  AbsTol		  "1e-6"
+  Refine		  "1"
+  MaxStep		  "auto"
+  MinStep		  "auto"
+  MaxNumMinSteps	  "-1"
+  InitialStep		  "auto"
+  FixedStep		  "auto"
+  MaxOrder		  5
+  OutputOption		  "RefineOutputTimes"
+  OutputTimes		  "[]"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  SaveTime		  on
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  on
+  OutputSaveName	  "yout"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  SaveFormat		  "Array"
+  LimitDataPoints	  off
+  MaxDataPoints		  "1000"
+  Decimation		  "1"
+  AlgebraicLoopMsg	  "warning"
+  MinStepSizeMsg	  "warning"
+  UnconnectedInputMsg	  "warning"
+  UnconnectedOutputMsg	  "warning"
+  UnconnectedLineMsg	  "warning"
+  InheritedTsInSrcMsg	  "warning"
+  SingleTaskRateTransMsg  "none"
+  MultiTaskRateTransMsg	  "error"
+  IntegerOverflowMsg	  "warning"
+  CheckForMatrixSingularity "none"
+  UnnecessaryDatatypeConvMsg "none"
+  Int32ToFloatConvMsg	  "warning"
+  SignalLabelMismatchMsg  "none"
+  LinearizationMsg	  "none"
+  VectorMatrixConversionMsg "none"
+  SfunCompatibilityCheckMsg "none"
+  BlockPriorityViolationMsg "warning"
+  ArrayBoundsChecking	  "none"
+  ConsistencyChecking	  "none"
+  ZeroCross		  on
+  Profile		  off
+  SimulationMode	  "normal"
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWInlineParameters	  off
+  RTWRetainRTWFile	  off
+  RTWTemplateMakefile	  "grt_default_tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  TLCProfiler		  off
+  TLCDebug		  off
+  TLCCoverage		  off
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "oneshot"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  off
+  ExtModeLogAll		  on
+  OptimizeBlockIOStorage  on
+  BufferReuse		  on
+  ParameterPooling	  on
+  BlockReductionOpt	  off
+  BooleanDataType	  off
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "fig8_08c"
+    Location		    [323, 146, 878, 522]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    212
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    ZoomFactor		    "100"
+    AutoZoom		    off
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      DiscreteTransferFcn
+      Name		      "Discrete\nlead control"
+      Position		      [115, 247, 175, 283]
+      Numerator		      "[4.556  -4.333]"
+      Denominator	      "[1 -0.7778]"
+      SampleTime	      ".025"
+      Realization	      "auto"
+    }
+    Block {
+      BlockType		      TransferFcn
+      Name		      "Lead\ncontrol"
+      Position		      [120, 57, 175, 93]
+      Numerator		      "[.5 1]"
+      Denominator	      "[0.1 1]"
+      Realization	      "auto"
+      AbsoluteTolerance	      "auto"
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux1"
+      Ports		      [4, 1]
+      Position		      [450, 172, 485, 208]
+      Inputs		      "4"
+      DisplayOption	      "none"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Slider\nKc"
+      Ports		      [1, 1]
+      Position		      [195, 60, 225, 90]
+      SourceBlock	      "simulink3/Math/Slider\nGain"
+      SourceType	      "Slider Gain"
+      low		      "0"
+      gain		      "10"
+      high		      "20"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Slider\nKd"
+      Ports		      [1, 1]
+      Position		      [195, 250, 225, 280]
+      SourceBlock	      "simulink3/Math/Slider\nGain"
+      SourceType	      "Slider Gain"
+      low		      "0"
+      gain		      "10"
+      high		      "20"
+    }
+    Block {
+      BlockType		      Step
+      Name		      "Step"
+      Position		      [15, 60, 45, 90]
+      Time		      "0"
+      Before		      "0"
+      After		      "1"
+      SampleTime	      ".001"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum"
+      Ports		      [2, 1]
+      Position		      [80, 255, 100, 275]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|+-"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum2"
+      Ports		      [2, 1]
+      Position		      [85, 65, 105, 85]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|+-"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      TransferFcn
+      Name		      "Tau 1"
+      Position		      [255, 57, 310, 93]
+      Numerator		      "1"
+      Denominator	      "[1 0]"
+      Realization	      "auto"
+      AbsoluteTolerance	      "auto"
+    }
+    Block {
+      BlockType		      TransferFcn
+      Name		      "Tau 2"
+      Position		      [325, 57, 380, 93]
+      Numerator		      "1"
+      Denominator	      "[1 1]"
+      Realization	      "auto"
+      AbsoluteTolerance	      "auto"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Yout\nUout"
+      Tag		      "position"
+      Ports		      [1]
+      Position		      [515, 175, 545, 205]
+      Floating		      off
+      Location		      [417, 257, 851, 674]
+      Open		      off
+      NumInputPorts	      "1"
+      TickLabels	      "on"
+      ZoomMode		      "yonly"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      Grid		      "on"
+      TimeRange		      "auto"
+      YMin		      "-5"
+      YMax		      "5"
+      SaveToWorkspace	      on
+      SaveName		      "ycd"
+      DataFormat	      "Array"
+      LimitDataPoints	      on
+      MaxDataPoints	      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      TransferFcn
+      Name		      "tau 1"
+      Position		      [255, 247, 310, 283]
+      Numerator		      "1"
+      Denominator	      "[1 0]"
+      Realization	      "auto"
+      AbsoluteTolerance	      "auto"
+    }
+    Block {
+      BlockType		      TransferFcn
+      Name		      "tau 2"
+      Position		      [325, 247, 380, 283]
+      Numerator		      "1"
+      Denominator	      "[1 1]"
+      Realization	      "auto"
+      AbsoluteTolerance	      "auto"
+    }
+    Line {
+      SrcBlock		      "Lead\ncontrol"
+      SrcPort		      1
+      DstBlock		      "Slider\nKc"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum2"
+      SrcPort		      1
+      DstBlock		      "Lead\ncontrol"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Tau 1"
+      SrcPort		      1
+      DstBlock		      "Tau 2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Discrete\nlead control"
+      SrcPort		      1
+      DstBlock		      "Slider\nKd"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "tau 1"
+      SrcPort		      1
+      DstBlock		      "tau 2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Step"
+      SrcPort		      1
+      Points		      [5, 0]
+      Branch {
+	DstBlock		"Sum2"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 190]
+	DstBlock		"Sum"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Tau 2"
+      SrcPort		      1
+      Points		      [10, 0]
+      Branch {
+	Points			[30, 0; 0, 100]
+	DstBlock		"Mux1"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 70; -300, 0]
+	DstBlock		"Sum2"
+	DstPort			2
+      }
+    }
+    Line {
+      SrcBlock		      "Sum"
+      SrcPort		      1
+      DstBlock		      "Discrete\nlead control"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "tau 2"
+      SrcPort		      1
+      Points		      [10, 0]
+      Branch {
+	Points			[30, 0; 0, -80]
+	DstBlock		"Mux1"
+	DstPort			2
+      }
+      Branch {
+	Points			[0, 70; -305, 0]
+	DstBlock		"Sum"
+	DstPort			2
+      }
+    }
+    Line {
+      SrcBlock		      "Slider\nKd"
+      SrcPort		      1
+      Points		      [5, 0]
+      Branch {
+	DstBlock		"tau 1"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -60]
+	DstBlock		"Mux1"
+	DstPort			4
+      }
+    }
+    Line {
+      SrcBlock		      "Mux1"
+      SrcPort		      1
+      DstBlock		      "Yout\nUout"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Slider\nKc"
+      SrcPort		      1
+      Points		      [5, 0]
+      Branch {
+	DstBlock		"Tau 1"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 120]
+	DstBlock		"Mux1"
+	DstPort			3
+      }
+    }
+  }
+}
