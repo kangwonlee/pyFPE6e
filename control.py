@@ -25,3 +25,7 @@ def bodegrid():
     axes_list = figure.axes
 
     [axes.grid(True, which='both', ls='-', color='0.7') for axes in axes_list]
+
+
+def nicegrid():
+    pl.grid(True, ls='-', color='0.7')
