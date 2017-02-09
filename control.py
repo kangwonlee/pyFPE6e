@@ -22,21 +22,6 @@ def bode(system, freq_rad_list, n=10000):
 def bodegrid():
     figure = pl.gcf()
 
-    h_axes = pl.gca() #pl.findobj(pl.get(pl.gcf(), 'Children'), 'Type', 'axes')
-    grey = [0.7, 0.7, 0.7]
-    pl.set(h_axes,
-           'xcolor', grey,
-           'ycolor', grey,
-           'GridLineStyle', '-',
-           'MinorGridLineStyle', '-',
-           'Units', 'pixels')
-    pl.grid(True)
+    axes_list = figure.axes
 
-    '''
-    c11 = copyobj(h_axes, pl.gcf())
-    pl.set(c11,
-           'color', 'none',
-           'xcolor', 'k',
-           'xgrid', 'off',
-           'ycolor', 'k',
-           'ygrid', 'off')'''
+    [axes.grid(True, which='both', ls='-', color='0.7') for axes in axes_list]
