@@ -13,7 +13,7 @@ einv = 1/pl.exp(1)
 num = 1
 den = [1 1]
 t = 0:.05:4
-y = impulse(num,den,t)
+y = ss.impulse(num,den,t)
 
 # define some lines for the plot
 tl = [0 1]
@@ -39,7 +39,7 @@ num = [a]              # form numerator
 den = [1 a]            # form denominator
 t = 0:0.01:4           # form time vector
 sys = tf(num,den)      # form system
-h = impulse(sys,t)     # compute impulse response
+h = ss.impulse(sys,t)     # compute impulse response
 figure()
 plot(t,h)            # plot impulse response
 y = step(sys,t)        # compute step response
