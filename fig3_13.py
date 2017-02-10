@@ -43,7 +43,7 @@ sys = ss.TransferFunction(num, den)  # form system
 h = ss.impulse(sys,t)     # compute impulse response
 pl.figure()
 pl.plot(t, h)  # plot impulse response
-y = step(sys,t)        # compute step response
+y = ss.step(sys, t)  # compute step response
 hold
 pl.plot(t, y, 'LineWidth', 2)  # plot step response
 pl.xlabel('Time (sec)')
