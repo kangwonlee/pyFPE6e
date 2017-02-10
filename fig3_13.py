@@ -24,7 +24,10 @@ y1 = [0, einv]
 t2 = [0, 1]
 y2 = [einv, einv]
 pl.figure()
-pl.plot(t, y, '-', tl, yl, '--', t1, y1, ':', t2, y2, ':', 'LineWidth', 2)
+pl.plot(tout, yout, '-')
+pl.plot(tl, yl, '--')
+pl.plot(t1, y1, ':')
+pl.plot(t2, y2, ':', linewidth=2)
 pl.title('Fig. 3.13(a) First order system impulse response')
 pl.xlabel('Time (sec)')
 pl.ylabel('h(t)')
