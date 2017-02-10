@@ -32,7 +32,8 @@ pl.text(1.1, 0.3679, '\leftarrow 1/e')
 pl.text(1, 0.05, '\downarrow t =  \tau')
 # grid
 control.nicegrid()
-pause
+pl.show()
+
 # Figure 3.13 (b)
 a = 1
 num = [a]              # form numerator
@@ -52,3 +53,4 @@ pl.text(2, 0.8, 'y(t)')
 pl.text(2, 0.2, 'h(t)')
 # grid
 control.nicegrid()
+pl.show()
