@@ -48,7 +48,7 @@ tout_sys_impulse, yout_sys_impulse = ss.impulse(sys,T=t)     # compute impulse r
 pl.figure()
 pl.plot(tout_sys_impulse, yout_sys_impulse)  # plot impulse response
 y = ss.step(sys, t)  # compute step response
-pl.hold()
+pl.hold(True)
 pl.plot(t, y, 'LineWidth', 2)  # plot step response
 pl.xlabel('Time (sec)')
 pl.ylabel('h(t),y(t)')
