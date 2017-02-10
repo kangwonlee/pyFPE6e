@@ -23,7 +23,7 @@ y1 = [0, einv]
 t2 = [0, 1]
 y2 = [einv, einv]
 pl.figure()
-plot(t,y,'-',tl,yl,'--',t1,y1,':',t2,y2,':','LineWidth',2)
+pl.plot(t, y, '-', tl, yl, '--', t1, y1, ':', t2, y2, ':', 'LineWidth', 2)
 title('Fig. 3.13(a) First order system impulse response')
 xlabel('Time (sec)')
 ylabel('h(t)')
@@ -41,10 +41,10 @@ t = pl.arange(0, 4 + 0.01 * 0.5, 0.01)  # form time vector
 sys = tf(num,den)      # form system
 h = ss.impulse(sys,t)     # compute impulse response
 pl.figure()
-plot(t,h)            # plot impulse response
+pl.plot(t, h)  # plot impulse response
 y = step(sys,t)        # compute step response
 hold
-plot(t,y,'LineWidth',2)            # plot step response
+pl.plot(t, y, 'LineWidth', 2)  # plot step response
 xlabel('Time (sec)')
 ylabel('h(t),y(t)')
 title('Fig. 3.13(b) Impulse and step responses')
