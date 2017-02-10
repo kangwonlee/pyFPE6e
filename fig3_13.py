@@ -44,9 +44,9 @@ num = [a]              # form numerator
 den = [1, a]            # form denominator
 t = pl.arange(0, 4 + 0.01 * 0.5, 0.01)  # form time vector
 sys = ss.TransferFunction(num, den)  # form system
-h = ss.impulse(sys,t)     # compute impulse response
+tout_sys_impulse, yout_sys_impulse = ss.impulse(sys,T=t)     # compute impulse response
 pl.figure()
-pl.plot(t, h)  # plot impulse response
+pl.plot(tout_sys_impulse, yout_sys_impulse)  # plot impulse response
 y = ss.step(sys, t)  # compute step response
 pl.hold()
 pl.plot(t, y, 'LineWidth', 2)  # plot step response
