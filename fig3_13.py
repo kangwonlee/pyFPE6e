@@ -1,0 +1,60 @@
+#  Figure 3.13      Feedback Control of Dynamic Systems, 6e
+#                        Franklin, Powell, Emami
+# script to generate Fig. 3.13
+#  fig3_13.m
+
+import pylab as pl
+import scipy.signal as ss
+
+import control
+
+pl.clf()
+einv = 1/pl.exp(1)
+num = 1
+den = [1, 1]
+t = pl.arange(0, 4 + 0.05 * 0.5, 0.05)
+sys0 = ss.TransferFunction(num, den)
+tout, yout = ss.impulse(sys0,T=t)
+
+# define some lines for the plot
+tl = [0, 1]
+yl = [1, 0]
+t1 = [1, 1]
+y1 = [0, einv]
+t2 = [0, 1]
+y2 = [einv, einv]
+pl.figure()
+pl.plot(tout, yout, '-')
+pl.plot(tl, yl, '--')
+pl.plot(t1, y1, ':')
+pl.plot(t2, y2, ':', linewidth=2)
+pl.title('Fig. 3.13(a) First order system impulse response')
+pl.xlabel('Time (sec)')
+pl.ylabel('h(t)')
+pl.text(0.7, 0.6, 'e**{-δt}')
+pl.text(1.1, 0.3679, '← 1/e')
+pl.text(1, 0.05, '↓ t =  τ')
+# grid
+control.nicegrid()
+pl.show()
+
+# Figure 3.13 (b)
+a = 1
+num = [a]              # form numerator
+den = [1, a]            # form denominator
+t = pl.arange(0, 4 + 0.01 * 0.5, 0.01)  # form time vector
+sys = ss.TransferFunction(num, den)  # form system
+tout_sys_impulse, yout_sys_impulse = ss.impulse(sys,T=t)     # compute impulse response
+pl.figure()
+pl.plot(tout_sys_impulse, yout_sys_impulse)  # plot impulse response
+tout_sys_step, yout_sys_step = ss.step(sys, T=t)  # compute step response
+pl.hold(True)
+pl.plot(tout_sys_step, yout_sys_step, linewidth=2)  # plot step response
+pl.xlabel('Time (sec)')
+pl.ylabel('h(t),y(t)')
+pl.title('Fig. 3.13(b) Impulse and step responses')
+pl.text(2, 0.8, 'y(t)')
+pl.text(2, 0.2, 'h(t)')
+# grid
+control.nicegrid()
+pl.show()
