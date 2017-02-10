@@ -25,7 +25,7 @@ y2 = [einv, einv]
 pl.figure()
 pl.plot(t, y, '-', tl, yl, '--', t1, y1, ':', t2, y2, ':', 'LineWidth', 2)
 pl.title('Fig. 3.13(a) First order system impulse response')
-xlabel('Time (sec)')
+pl.xlabel('Time (sec)')
 ylabel('h(t)')
 text(0.7,0.6,'e^{-\sigmat}')
 text(1.1,0.3679,'\leftarrow 1/e')
@@ -45,7 +45,7 @@ pl.plot(t, h)  # plot impulse response
 y = step(sys,t)        # compute step response
 hold
 pl.plot(t, y, 'LineWidth', 2)  # plot step response
-xlabel('Time (sec)')
+pl.xlabel('Time (sec)')
 ylabel('h(t),y(t)')
 pl.title('Fig. 3.13(b) Impulse and step responses')
 text(2,0.8,'y(t)')
