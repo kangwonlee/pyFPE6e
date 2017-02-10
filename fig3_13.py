@@ -31,7 +31,7 @@ pl.text((0.7, 0.6, 'e^{-\sigmat}')
 pl.text((1.1, 0.3679, '\leftarrow 1/e')
 pl.text((1, 0.05, '\downarrow t =  \tau')
 # grid
-nicegrid
+control.nicegrid()
 pause
 # Figure 3.13 (b)
 a = 1
