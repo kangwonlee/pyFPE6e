@@ -47,9 +47,9 @@ sys = ss.TransferFunction(num, den)  # form system
 tout_sys_impulse, yout_sys_impulse = ss.impulse(sys,T=t)     # compute impulse response
 pl.figure()
 pl.plot(tout_sys_impulse, yout_sys_impulse)  # plot impulse response
-y = ss.step(sys, t)  # compute step response
+tout_sys_step, yout_sys_step = ss.step(sys, T=t)  # compute step response
 pl.hold(True)
-pl.plot(t, y, 'LineWidth', 2)  # plot step response
+pl.plot(tout_sys_step, yout_sys_step, linewidth=2)  # plot step response
 pl.xlabel('Time (sec)')
 pl.ylabel('h(t),y(t)')
 pl.title('Fig. 3.13(b) Impulse and step responses')
