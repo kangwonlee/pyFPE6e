@@ -44,7 +44,7 @@ h = ss.impulse(sys,t)     # compute impulse response
 pl.figure()
 pl.plot(t, h)  # plot impulse response
 y = ss.step(sys, t)  # compute step response
-hold
+pl.hold()
 pl.plot(t, y, 'LineWidth', 2)  # plot step response
 pl.xlabel('Time (sec)')
 pl.ylabel('h(t),y(t)')
