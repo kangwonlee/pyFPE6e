@@ -12,7 +12,7 @@ pl.clf()
 einv = 1/pl.exp(1)
 num = 1
 den = [1, 1]
-t = 0:.05:4
+t = pl.arange(0, 4 + 0.05 * 0.5, 0.05)
 y = ss.impulse(num,den,t)
 
 # define some lines for the plot
@@ -37,7 +37,7 @@ pause
 a = 1
 num = [a]              # form numerator
 den = [1, a]            # form denominator
-t = 0:0.01:4           # form time vector
+t = pl.arange(0, 4 + 0.01 * 0.5, 0.01)  # form time vector
 sys = tf(num,den)      # form system
 h = ss.impulse(sys,t)     # compute impulse response
 figure()
