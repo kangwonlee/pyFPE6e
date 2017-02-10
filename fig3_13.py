@@ -2,6 +2,12 @@
 #                        Franklin, Powell, Emami
 # script to generate Fig. 3.13
 #  fig3_13.m
+
+import pylab as pl
+import scipy.signal as ss
+
+import control
+
 clf;
 einv=1/exp(1);
 num=1;
