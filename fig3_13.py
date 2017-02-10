@@ -11,17 +11,17 @@ import control
 pl.clf()
 einv = 1/pl.exp(1)
 num = 1
-den = [1 1]
+den = [1, 1]
 t = 0:.05:4
 y = ss.impulse(num,den,t)
 
 # define some lines for the plot
-tl = [0 1]
-yl = [1 0]
-t1 = [1 1]
-y1 = [0 einv]
-t2 = [0 1]
-y2 = [einv einv]
+tl = [0, 1]
+yl = [1, 0]
+t1 = [1, 1]
+y1 = [0, einv]
+t2 = [0, 1]
+y2 = [einv, einv]
 figure()
 plot(t,y,'-',tl,yl,'--',t1,y1,':',t2,y2,':','LineWidth',2)
 title('Fig. 3.13(a) First order system impulse response')
@@ -36,7 +36,7 @@ pause
 # Figure 3.13 (b)
 a = 1
 num = [a]              # form numerator
-den = [1 a]            # form denominator
+den = [1, a]            # form denominator
 t = 0:0.01:4           # form time vector
 sys = tf(num,den)      # form system
 h = ss.impulse(sys,t)     # compute impulse response
