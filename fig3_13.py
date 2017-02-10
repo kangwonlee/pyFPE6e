@@ -22,7 +22,7 @@ t1 = [1, 1]
 y1 = [0, einv]
 t2 = [0, 1]
 y2 = [einv, einv]
-figure()
+pl.figure()
 plot(t,y,'-',tl,yl,'--',t1,y1,':',t2,y2,':','LineWidth',2)
 title('Fig. 3.13(a) First order system impulse response')
 xlabel('Time (sec)')
@@ -40,7 +40,7 @@ den = [1, a]            # form denominator
 t = pl.arange(0, 4 + 0.01 * 0.5, 0.01)  # form time vector
 sys = tf(num,den)      # form system
 h = ss.impulse(sys,t)     # compute impulse response
-figure()
+pl.figure()
 plot(t,h)            # plot impulse response
 y = step(sys,t)        # compute step response
 hold
