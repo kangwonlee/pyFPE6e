@@ -8,7 +8,7 @@ import scipy.signal as ss
 
 import control
 
-clf
+pl.clf()
 einv=1/exp(1)
 num=1
 den=[1 1]
