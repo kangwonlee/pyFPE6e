@@ -13,7 +13,8 @@ einv = 1/pl.exp(1)
 num = 1
 den = [1, 1]
 t = pl.arange(0, 4 + 0.05 * 0.5, 0.05)
-y = ss.impulse(num,den,t)
+sys0 = ss.TransferFunction(num, den)
+tout, yout = ss.impulse(sys0,T=t)
 
 # define some lines for the plot
 tl = [0, 1]
