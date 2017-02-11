@@ -4,11 +4,11 @@ For an introductory control course at the Korea Polytechnic University.
 
 Python version of some of the codes from 
 
-Franklin, Powell, and Emami-Naeini, Feedback Control Systems, 6th ed. Prentice-Hall, 2010. (ISBN 0-13-500150-1)
+* Franklin, Powell, and Emami-Naeini, Feedback Control Systems, 6th ed. Prentice-Hall, 2010. (ISBN 0-13-500150-1)
 
 7th version of the book is also available but not included here yet:
 
-Franklin, Powell, and Emami-Naeini, Feedback Control Systems, 7th ed. Pearson, 2014. (ISBN 0-13-349659-7)
+* Franklin, Powell, and Emami-Naeini, Feedback Control Systems, 7th ed. Pearson, 2014. (ISBN 0-13-349659-7)
 
 
 ## Lecture schedule
@@ -29,3 +29,12 @@ Franklin, Powell, and Emami-Naeini, Feedback Control Systems, 7th ed. Pearson, 2
 | 13 | State Space Design              | 07 |                  |05/16 |
 | 14 | State Space Design              | 07 |                  |05/20 |
 | 15 | Final Exam                      |    |                  |05/30 |
+
+
+## Development Environment Suggestion
+* Python 3.x
+* [Anaconda 4.x Python 3.x version](https://www.continuum.io/downloads)
+* [PyCharm Community](https://www.jetbrains.com/pycharm/download/)
+* To run PyCharm, may need [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (2017 02)
+* [Git for Windows](https://git-scm.com/download/win)
+* [SourceTree](https://www.sourcetreeapp.com/download/) or [Github Desktop](https://desktop.github.com/)
