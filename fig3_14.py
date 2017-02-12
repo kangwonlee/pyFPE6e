@@ -2,6 +2,12 @@
 #                        Franklin, Powell, Emami
 #
 #  fig3_14.m
+
+import pylab as pl
+import scipy.signal as ss
+
+import control
+
 clf;
 num=[2 1];
 den=[1 3 2];
