@@ -12,4 +12,4 @@ num=[2, 1]
 den=[1, 3, 2]
 pl.axis ('square')
 ax = control.pzmap(num, den)
-grid
+ax.grid(True)
