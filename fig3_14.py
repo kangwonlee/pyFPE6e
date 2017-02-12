@@ -4,7 +4,6 @@
 #  fig3_14.m
 
 import pylab as pl
-import scipy.signal as ss
 
 import control
 
@@ -12,5 +11,5 @@ pl.clf()
 num=[2, 1]
 den=[1, 3, 2]
 pl.axis ('square')
-pzmap(num,den)
+control.pzmap(num, den)
 grid
