@@ -11,5 +11,5 @@ pl.clf()
 num=[2, 1]
 den=[1, 3, 2]
 pl.axis ('square')
-control.pzmap(num, den)
+ax = control.pzmap(num, den)
 grid
