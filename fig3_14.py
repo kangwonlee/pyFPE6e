@@ -11,6 +11,6 @@ import control
 pl.clf()
 num=[2, 1]
 den=[1, 3, 2]
-axis ('square')
+pl.axis ('square')
 pzmap(num,den)
 grid
