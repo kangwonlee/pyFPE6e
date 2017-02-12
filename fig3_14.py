@@ -8,9 +8,9 @@ import scipy.signal as ss
 
 import control
 
-clf;
-num=[2 1];
-den=[1 3 2];
+clf
+num=[2 1]
+den=[1 3 2]
 axis ('square')
 pzmap(num,den)
 grid
