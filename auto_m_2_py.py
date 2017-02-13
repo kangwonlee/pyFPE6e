@@ -35,6 +35,11 @@ def handle_equal(txt, new_text=' = '):
     return replace_txt_pattern_new(txt, pattern, new_text)
 
 
+def get_pattern_bracket_string():
+    return re.compile(r'\[(.+)?\]')
+#    return re.compile(r'\[[a-zA-Z0-9_]+(\s+)\]')
+
+
 def insert_imports(txt):
     lines = txt.splitlines()
     import_string = '''import pylab as pl
