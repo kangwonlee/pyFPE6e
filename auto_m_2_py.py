@@ -14,9 +14,9 @@ def handle_semi_colon(stage_00):
     return stage_40
 
 
-def handle_semi_colon_followed_by_space(txt):
+def handle_semi_colon_followed_by_space(txt, new_text='#;\n'):
     pattern = get_pattern_semi_colon_followed_by_space()
-    replaced, count = pattern.subn ('#;\n', txt)
+    replaced, count = pattern.subn (new_text, txt)
     return replaced
 
 
