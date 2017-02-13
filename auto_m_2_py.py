@@ -3,7 +3,7 @@ import os
 
 
 def get_pattern_semi_colon_followed_by_space():
-    return re.compile(r';\s+')
+    return re.compile(r';\s*')
 
 
 def handle_semi_colon(stage_00):
