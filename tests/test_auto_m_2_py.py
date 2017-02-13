@@ -50,25 +50,16 @@ nicegrid
     def tearDown(self):
         del self.txt
 
-    def test_handle_semi_colon(self):
+    def test_handle_semi_colon_followed_by_space(self):
         input_txt = '''figure(); plot(t,y1);xlabel('Time (sec)');
 '''
 
-        result = m2py.handle_semi_colon(input_txt)
+        result = m2py.handle_semi_colon_followed_by_space(input_txt, '\n')
         expected = '''figure()
 plot(t,y1)
 xlabel('Time (sec)')
 '''
         self.assertEqual(expected, result)
-
-    def test_handle_semi_colon_followed_by_space(self):
-        input_txt = '''figure(); plot(t,y1);  xlabel('Time (sec)');   ylabel('\theta (deg)');'''
-        result = m2py.handle_semi_colon_followed_by_space(input_txt)
-        expected = '''figure()
-plot(t,y1)
-xlabel('Time (sec)')
-ylabel('\theta (deg)')
-'''
 
     def test_insert_import(self):
         input_txt = '''#  Figure 3.14     Feedback Control of Dynamic Systems, 6e
