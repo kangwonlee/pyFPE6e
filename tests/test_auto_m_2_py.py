@@ -226,7 +226,9 @@ y*=*=*impulse(num,den,t)
 
     def test_get_pattern_bracket_string(self):
         pattern = m2py.get_pattern_bracket_string()
-        input_txt = '1   2    3     [1 3  2]'
+        input_txt = '''1   2    3     [1 3  2]
+den = [2 1]
+'''
         result = pattern.findall(input_txt)
-        expected = ['1 3  2']
+        expected = ['1 3  2', '2 1']
         self.assertEqual(expected, result)
