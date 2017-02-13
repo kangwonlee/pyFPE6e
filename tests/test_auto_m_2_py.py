@@ -231,4 +231,4 @@ den = [2 1]
 '''
         result = pattern.findall(input_txt)
         expected = ['1 3  2', '2 1']
-        self.assertEqual(expected, result)
+        self.assertSequenceEqual(expected, result)
