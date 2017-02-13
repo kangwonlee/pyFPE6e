@@ -69,3 +69,30 @@ plot(t,y1)
 xlabel('Time (sec)')
 ylabel('\theta (deg)')
 '''
+
+    def test_insert_import(self):
+        input_txt = '''#  Figure 3.14     Feedback Control of Dynamic Systems, 6e
+#                        Franklin, Powell, Emami
+#
+#  fig3_14.m
+
+pl.clf()
+num=[2, 1]
+den=[1, 3, 2]
+'''
+        result = m2py.insert_imports(input_txt)
+        expected = '''#  Figure 3.14     Feedback Control of Dynamic Systems, 6e
+#                        Franklin, Powell, Emami
+#
+#  fig3_14.m
+
+import pylab as pl
+import scipy.signal as ss
+
+import control
+
+pl.clf()
+num=[2, 1]
+den=[1, 3, 2]
+'''
+        self.assertEqual(expected, result)
