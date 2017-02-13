@@ -96,3 +96,10 @@ num=[2, 1]
 den=[1, 3, 2]
 '''
         self.assertEqual(expected, result)
+
+    def test_m_filename_2_py_filename(self):
+        m_filename = 'fig1_10b.m'
+        result = m2py.m_filename_2_py_filename(m_filename)
+        expected = 'fig1_10b.py'
+
+        self.assertEqual(expected, result)
