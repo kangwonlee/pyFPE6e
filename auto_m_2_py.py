@@ -1,4 +1,5 @@
 import re
+import os
 
 
 def get_pattern_semi_colon_followed_by_space():
@@ -55,3 +56,10 @@ def write_txt(filename, txt):
     with open(filename, 'w') as f:
         f.write(txt)
         f.close()
+
+
+def m_filename_2_py_filename(m_filename, new_extension='.py'):
+    split_filename_tuple = os.path.splitext(m_filename)
+    new_filename = ''.join(split_filename_tuple[:-1] + (new_extension,))
+
+    return new_filename
