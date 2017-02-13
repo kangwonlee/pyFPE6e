@@ -21,6 +21,10 @@ def handle_semi_colon_followed_by_space(txt, new_text='#;\n'):
     return replaced
 
 
+def get_pattern_space_equal_space():
+    return re.compile(r'\s*=\s*')
+
+
 def insert_imports(txt):
     lines = txt.splitlines()
     import_string = '''import pylab as pl
