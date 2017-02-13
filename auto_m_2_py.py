@@ -42,3 +42,16 @@ import control
     result_txt = '\n'.join(lines)
     result_txt += '\n'
     return result_txt
+
+
+def read_txt(filename):
+    with open(filename, 'r') as f:
+        txt = f.read()
+        f.close()
+    return txt
+
+
+def write_txt(filename, txt):
+    with open(filename, 'w') as f:
+        f.write(txt)
+        f.close()
