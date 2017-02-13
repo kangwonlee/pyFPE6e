@@ -96,6 +96,7 @@ den=[1, 3, 2]
         self.assertEqual(expected, result)
 
     def test_convert_matlab_2_python(self):
+        maxDiff_backup = self.maxDiff
         self.maxDiff = None
         input_txt = '''%  Figure 3.4      Feedback Control of Dynamic Systems, 6e
 %                        Franklin, Powell, Emami
@@ -193,6 +194,7 @@ control.nicegrid()
 pl.show()
 '''
         self.assertEqual(expected, result)
+        self.maxDiff = maxDiff_backup
 
     def test_space_equal_space(self):
         # test if pattern is correct
