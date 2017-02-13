@@ -193,3 +193,16 @@ control.nicegrid()
 pl.show()
 '''
         self.assertEqual(expected, result)
+
+    def test_space_equal_space(self):
+        # test if pattern is correct
+        pattern = m2py.get_pattern_space_equal_space()
+        input_txt = '''num=[2 1]
+den =[1 3 2]
+t= 0:0.1:6
+y = impulse(num,den,t)
+'''
+        result = pattern.findall(input_txt)
+        expected = ['=', ' =', '= ', ' = ']
+
+        self.assertEqual(expected, result)
