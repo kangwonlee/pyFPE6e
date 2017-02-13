@@ -232,3 +232,14 @@ den = [2 1]
         result = pattern.findall(input_txt)
         expected = ['1 3  2', '2 1']
         self.assertSequenceEqual(expected, result)
+
+    def test_replace_bracket_string(self):
+        input_text = '''clf
+num = [2 1]
+den = [1 3 2]
+t = 0:0.1:6
+y = impulse(num,den,t)
+'''
+        result = m2py.find_bracket_string(input_text)
+        expected = ((10, 15, '[2 1]'), (22, 29, '[1 3 2]'))
+        self.assertSequenceEqual(expected, result)
