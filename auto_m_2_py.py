@@ -1,4 +1,5 @@
 import re
+import sys
 import os
 
 
@@ -71,3 +72,18 @@ def convert_matlab_2_python(matlab_script):
     txt_insert_import = insert_imports(txt_newline)
 
     return txt_insert_import
+
+
+def convert_m_2_py(m_filename):
+    matlab_script = read_txt(m_filename)
+    python_script = convert_matlab_2_python(matlab_script)
+    write_txt(m_filename_2_py_filename(m_filename), python_script)
+
+
+def main(argv):
+    if 1 < len(argv):
+        convert_m_2_py(argv[1])
+
+
+if __name__ == '__main__':
+    main(sys.argv)
