@@ -25,6 +25,16 @@ def get_pattern_space_equal_space():
     return re.compile(r'\s*=\s*')
 
 
+def replace_txt_pattern_new(txt, pattern, new_text):
+    replaced, count = pattern.subn(new_text, txt)
+    return replaced
+
+
+def handle_equal(txt, new_text=' = '):
+    pattern = get_pattern_space_equal_space()
+    return replace_txt_pattern_new(txt, pattern, new_text)
+
+
 def insert_imports(txt):
     lines = txt.splitlines()
     import_string = '''import pylab as pl
@@ -74,8 +84,9 @@ def convert_matlab_2_python(matlab_script):
     txt_comment = matlab_script.replace('%', '#')
     txt_newline = handle_semi_colon_followed_by_space(txt_comment, '\n')
     txt_insert_import = insert_imports(txt_newline)
+    txt_equal = handle_equal(txt_insert_import)
 
-    return txt_insert_import
+    return txt_equal
 
 
 def convert_m_2_py(m_filename):
