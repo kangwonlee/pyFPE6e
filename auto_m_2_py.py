@@ -63,3 +63,11 @@ def m_filename_2_py_filename(m_filename, new_extension='.py'):
     new_filename = ''.join(split_filename_tuple[:-1] + (new_extension,))
 
     return new_filename
+
+
+def convert_matlab_2_python(matlab_script):
+    txt_comment = matlab_script.replace('%', '#')
+    txt_newline = handle_semi_colon_followed_by_space(txt_comment, '\n')
+    txt_insert_import = insert_imports(txt_newline)
+
+    return txt_insert_import
