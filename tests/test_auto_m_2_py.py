@@ -206,3 +206,18 @@ y = impulse(num,den,t)
         expected = ['=', ' =', '= ', ' = ']
 
         self.assertEqual(expected, result)
+
+    def test_handle_equal(self):
+        input_txt = '''num=[2 1]
+den =[1 3 2]
+t= 0:0.1:6
+y = impulse(num,den,t)
+'''
+        result = m2py.handle_equal(input_txt, '*=*=*')
+        expected = '''num*=*=*[2 1]
+den*=*=*[1 3 2]
+t*=*=*0:0.1:6
+y*=*=*impulse(num,den,t)
+'''
+
+        self.assertEqual(expected, result)
