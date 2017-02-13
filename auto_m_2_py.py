@@ -40,6 +40,15 @@ def get_pattern_bracket_string():
 #    return re.compile(r'\[[a-zA-Z0-9_]+(\s+)\]')
 
 
+def find_bracket_string(txt):
+    pattern = get_pattern_bracket_string()
+    result = []
+    for match in pattern.finditer(txt):
+        result.append((match.start(), match.end(), match.group()))
+
+    return tuple(result)
+
+
 def insert_imports(txt):
     lines = txt.splitlines()
     import_string = '''import pylab as pl
