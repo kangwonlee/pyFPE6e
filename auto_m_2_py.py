@@ -23,6 +23,12 @@ def replace_to_arange(matlab_array_text, pattern=get_pattern_arange()):
     return module_new_text
 
 
+def process_to_arange(txt):
+    pattern = get_pattern_arange()
+    new_text = apply_replace_to_matches(txt, pattern, replace_to_arange)
+    return new_text
+
+
 def handle_semi_colon(stage_00):
     stage_10 = stage_00.replace(';', '#;\n')
     stage_20 = stage_10.replace('#;\n\n', '#;\n')
