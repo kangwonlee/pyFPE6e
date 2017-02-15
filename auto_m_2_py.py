@@ -11,6 +11,24 @@ def get_pattern_semi_colon_followed_by_space():
     return re.compile(r';\s*')
 
 
+def get_pattern_arange():
+    return re.compile(r'(?P<start>[\d.\w]+):(?P<interval>[\d.\w]+):(?P<end>[\d.\w]+)')
+
+
+def replace_to_arange(matlab_array_text, pattern=get_pattern_arange()):
+    match = pattern.match(matlab_array_text)
+    match_dict = match.groupdict()
+    new_text = 'arange({start}, {end} + 0.5*({interval}), {interval})'.format(**match_dict)
+    module_new_text = '%s.%s' % ('pl', new_text)
+    return module_new_text
+
+
+def process_to_arange(txt):
+    pattern = get_pattern_arange()
+    new_text = apply_replace_to_matches(txt, pattern, replace_to_arange)
+    return new_text
+
+
 def handle_semi_colon(stage_00):
     stage_10 = stage_00.replace(';', '#;\n')
     stage_20 = stage_10.replace('#;\n\n', '#;\n')
@@ -161,8 +179,9 @@ def convert_matlab_2_python(matlab_script):
     txt_insert_import = insert_imports(txt_newline)
     txt_equal = handle_equal(txt_insert_import)
     txt_list = process_bracket_string(txt_equal)
+    txt_arange = process_to_arange(txt_list)
 
-    return txt_list
+    return txt_arange
 
 
 def convert_m_2_py(m_filename):
