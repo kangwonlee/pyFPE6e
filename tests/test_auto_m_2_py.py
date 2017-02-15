@@ -96,6 +96,7 @@ den=[1, 3, 2]
         self.assertEqual(expected, result)
 
     def test_convert_matlab_2_python(self):
+        maxDiff_backup = self.maxDiff
         self.maxDiff = None
         input_txt = '''%  Figure 3.4      Feedback Control of Dynamic Systems, 6e
 %                        Franklin, Powell, Emami
@@ -193,6 +194,7 @@ control.nicegrid()
 pl.show()
 '''
         self.assertEqual(expected, result)
+        self.maxDiff = maxDiff_backup
 
     def test_space_equal_space(self):
         # test if pattern is correct
@@ -220,4 +222,71 @@ t*=*=*0:0.1:6
 y*=*=*impulse(num,den,t)
 '''
 
+        self.assertEqual(expected, result)
+
+    def test_get_pattern_bracket_string(self):
+        pattern = m2py.get_pattern_bracket_string()
+        input_txt = '''1   2    3     [1 3  2]
+den = [2 1]
+'''
+        result = pattern.findall(input_txt)
+        expected = ['1 3  2', '2 1']
+        self.assertSequenceEqual(expected, result)
+
+    def test_replace_bracket_string(self):
+        input_text = '''clf
+num = [2 1]
+den = [1 3 2]
+t = 0:0.1:6
+y = impulse(num,den,t)
+'''
+        result = m2py.find_bracket_string(input_text)
+        expected = ((10, 15, '[2 1]'), (22, 29, '[1 3 2]'))
+        self.assertSequenceEqual(expected, result)
+
+    def test_get_pattern_space(self):
+        input_txt = '[1 3  2]'
+        pattern = m2py.get_pattern_space()
+        result = pattern.findall(input_txt)
+        expected = [' ', '  ']
+        self.assertSequenceEqual(expected, result)
+
+    def test_replace_space_with_comma(self):
+        input_txt = '[1 3  2]'
+        result = m2py.replace_space_with_comma(input_txt)
+        expected = '[1,3,2]'
+        self.assertEqual(expected, result)
+
+    def test_replace_multicomma_to_comma(self):
+        input_txt = '[1,,3,,,2]'
+        result = m2py.replace_multicomma_to_comma(input_txt)
+        expected = '[1,3,2]'
+        self.assertEqual(expected, result)
+
+    def test_convert_bracket_string_00(self):
+        input_txt = '[2 1]'
+        result = m2py.convert_bracket_string(input_txt)
+        expected = '[2, 1]'
+        self.assertEqual(expected, result)
+
+    def test_convert_bracket_string_01(self):
+        input_txt = '[1 2, 1]'
+        result = m2py.convert_bracket_string(input_txt)
+        expected = '[1, 2, 1]'
+        self.assertEqual(expected, result)
+
+    def test_process_bracket_string(self):
+        input_txt = '''clf
+num = [2 1]
+den = [1 3,    2]
+t = 0:0.1:6
+y = impulse(num,den,t)
+'''
+        result = m2py.process_bracket_string(input_txt)
+        expected = '''clf
+num = [2, 1]
+den = [1, 3, 2]
+t = 0:0.1:6
+y = impulse(num,den,t)
+'''
         self.assertEqual(expected, result)

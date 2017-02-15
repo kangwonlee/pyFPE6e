@@ -35,6 +35,54 @@ def handle_equal(txt, new_text=' = '):
     return replace_txt_pattern_new(txt, pattern, new_text)
 
 
+def get_pattern_bracket_string():
+    return re.compile(r'\[(.+)?\]')
+#    return re.compile(r'\[[a-zA-Z0-9_]+(\s+)\]')
+
+
+def find_bracket_string(txt):
+    pattern = get_pattern_bracket_string()
+    result = []
+    for match in pattern.finditer(txt):
+        result.append((match.start(), match.end(), match.group()))
+
+    return tuple(result)
+
+
+def get_pattern_space():
+    return re.compile('\s+')
+
+
+def replace_space_with_comma(txt, new_text=','):
+    pattern = get_pattern_space()
+    return replace_txt_pattern_new(txt, pattern, new_text=new_text)
+
+
+def replace_multicomma_to_comma(txt):
+    return re.subn(',+', ',', txt)[0]
+
+
+def convert_bracket_string(br_txt_br):
+    br_space_to_comma_br = replace_space_with_comma(br_txt_br)
+    br_multicomma_to_comma_br = replace_multicomma_to_comma(br_space_to_comma_br)
+    br_comma_space_br = br_multicomma_to_comma_br.replace(',', ', ')
+    return br_comma_space_br
+
+
+def process_bracket_string(txt):
+    start_end_text_tuple = find_bracket_string(txt)
+    i_from = 0
+    new_text = ''
+    for i_start, i_end, text in start_end_text_tuple:
+        new_text += txt[i_from:i_start]
+        br_comma_br = convert_bracket_string(text)
+        new_text += br_comma_br
+        i_from = i_end
+    new_text += txt[i_from:]
+
+    return new_text
+
+
 def insert_imports(txt):
     lines = txt.splitlines()
     import_string = '''import pylab as pl
@@ -85,8 +133,9 @@ def convert_matlab_2_python(matlab_script):
     txt_newline = handle_semi_colon_followed_by_space(txt_comment, '\n')
     txt_insert_import = insert_imports(txt_newline)
     txt_equal = handle_equal(txt_insert_import)
+    txt_list = process_bracket_string(txt_equal)
 
-    return txt_equal
+    return txt_list
 
 
 def convert_m_2_py(m_filename):
