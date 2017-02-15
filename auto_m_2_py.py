@@ -19,6 +19,27 @@ def handle_semi_colon(stage_00):
     return stage_40
 
 
+def apply_replace_to_matches(txt, pattern, replace_function):
+    """
+
+    :param string txt: source code
+    :param __Regex pattern: regular expression to find
+    :param func replace_function: generate string to replace the pattern
+    :return:
+    """
+    i_from = 0
+    new_text = ''
+    for match in pattern.finditer(txt):
+        i_start, i_end, text = match.start(), match.end(), match.group()
+
+        new_text += txt[i_from:i_start]
+        br_comma_br = replace_function(text)
+        new_text += br_comma_br
+        i_from = i_end
+    new_text += txt[i_from:]
+    return new_text
+
+
 def handle_semi_colon_followed_by_space(txt, new_text='#;\n'):
     pattern = get_pattern_semi_colon_followed_by_space()
     replaced, count = pattern.subn (new_text, txt)
