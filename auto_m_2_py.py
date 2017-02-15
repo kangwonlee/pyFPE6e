@@ -19,6 +19,16 @@ def handle_semi_colon(stage_00):
     return stage_40
 
 
+def process_semi_colon_followed_by_space_comment(txt):
+    pattern = get_pattern_semi_colon_followed_by_space_comment()
+
+    def replace_function(txt):
+        return txt.replace(';', ' ')
+
+    new_text = apply_replace_to_matches(txt, pattern, replace_function)
+    return new_text
+
+
 def apply_replace_to_matches(txt, pattern, replace_function):
     """
 
