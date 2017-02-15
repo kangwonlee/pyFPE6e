@@ -190,10 +190,16 @@ def get_function_module():
     return {
         'clf': pylab,
         'plot': pylab,
+        'text': pylab,
         'grid': pylab,
         'title': pylab,
         'xlabel': pylab,
         'ylabel': pylab,
+        'hold': pylab,
+        'sin': pylab,
+        'cos': pylab,
+        'exp': pylab,
+        'arctan': pylab,
         'impulse': signal,
         'nicegrid': control,
     }
