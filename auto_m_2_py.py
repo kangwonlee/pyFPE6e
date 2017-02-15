@@ -190,11 +190,14 @@ def get_function_module():
     return {
         'clf': pylab,
         'plot': pylab,
+        'loglog': pylab,
+        'semilogx': pylab,
         'text': pylab,
         'grid': pylab,
         'title': pylab,
         'xlabel': pylab,
         'ylabel': pylab,
+        'subplot': pylab,
         'hold': pylab,
         'sin': pylab,
         'cos': pylab,
@@ -202,6 +205,9 @@ def get_function_module():
         'arctan': pylab,
         'impulse': signal,
         'nicegrid': control,
+        'bode': control,
+        'bodegrid': control,
+        'pzmap': control,
     }
 
 
