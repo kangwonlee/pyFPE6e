@@ -262,3 +262,15 @@ y = impulse(num,den,t)
         result = m2py.replace_multicomma_to_comma(input_txt)
         expected = '[1,3,2]'
         self.assertEqual(expected, result)
+
+    def test_convert_bracket_string_00(self):
+        input_txt = '[2 1]'
+        result = m2py.convert_bracket_string(input_txt)
+        expected = '[2, 1]'
+        self.assertEqual(expected, result)
+
+    def test_convert_bracket_string_01(self):
+        input_txt = '[1 2, 1]'
+        result = m2py.convert_bracket_string(input_txt)
+        expected = '[1, 2, 1]'
+        self.assertEqual(expected, result)
