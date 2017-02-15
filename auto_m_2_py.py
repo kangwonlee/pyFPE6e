@@ -132,11 +132,11 @@ def process_bracket_string(txt):
 
 def insert_imports(txt):
     lines = txt.splitlines()
-    import_string = '''import pylab as pl
-import scipy.signal as ss
+    import_string = '''import %s as %s
+import %s as %s
 
-import control
-'''
+import %s as %s
+''' % (get_pylab_name() + get_signal_name() + get_control_name())
 
     # locate first line after header comment
 
