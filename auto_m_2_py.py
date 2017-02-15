@@ -51,8 +51,9 @@ def apply_replace_to_matches(txt, pattern, replace_function):
 
 
 def handle_semi_colon_followed_by_space(txt, new_text='#;\n'):
+    comment_processed_text = process_semi_colon_followed_by_space_comment(txt)
     pattern = get_pattern_semi_colon_followed_by_space()
-    replaced, count = pattern.subn (new_text, txt)
+    replaced, count = pattern.subn (new_text, comment_processed_text)
     return replaced
 
 
