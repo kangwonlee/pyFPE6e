@@ -1,5 +1,6 @@
 import unittest
 import auto_m_2_py as m2py
+import re
 
 
 class TestM2Py(unittest.TestCase):
@@ -323,3 +324,12 @@ t = 0:0.1:6
 y = impulse(num,den,t)
 '''
         self.assertEqual(expected, result)
+
+    def test_apply_replace_to_matches(self):
+        pattern = re.compile('[a-z]')
+        txt = 'abcdefghijklmnopqrstuvw'
+
+        # see if ascii conversion works
+        result = m2py.apply_replace_to_matches(txt, pattern, lambda txt: str('%d,'%ord(txt)))
+        for character, ascii_char in zip(list(txt), result.split(',')):
+            self.assertEqual(ord(character), int(ascii_char))
