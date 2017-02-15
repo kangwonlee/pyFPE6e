@@ -49,6 +49,10 @@ def find_bracket_string(txt):
     return tuple(result)
 
 
+def get_pattern_space():
+    return re.compile('\s+')
+
+
 def insert_imports(txt):
     lines = txt.splitlines()
     import_string = '''import pylab as pl
