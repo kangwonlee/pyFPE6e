@@ -11,6 +11,10 @@ def get_pattern_semi_colon_followed_by_space():
     return re.compile(r';\s*')
 
 
+def get_pattern_arange():
+    return re.compile(r'(?P<start>[\w]+):(?P<interval>[\w]+):(?P<end>[\w]+)')
+
+
 def handle_semi_colon(stage_00):
     stage_10 = stage_00.replace(';', '#;\n')
     stage_20 = stage_10.replace('#;\n\n', '#;\n')
