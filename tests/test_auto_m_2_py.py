@@ -11,7 +11,7 @@ class TestM2Py(unittest.TestCase):
         result = pattern.findall(input_txt)
         expected = ['; ', ';  ', ';   ', ';\n']
 
-        self.assertEqual(expected, result)
+        self.assertSequenceEqual(expected, result)
 
     def setUp(self):
         self.txt = '''%  Figure 3.6     Feedback Control of Dynamic Systems, 6e
