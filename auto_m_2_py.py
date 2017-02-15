@@ -62,6 +62,13 @@ def replace_multicomma_to_comma(txt):
     return re.subn(',+', ',', txt)[0]
 
 
+def convert_bracket_string(br_txt_br):
+    br_space_to_comma_br = replace_space_with_comma(br_txt_br)
+    br_multicomma_to_comma_br = replace_multicomma_to_comma(br_space_to_comma_br)
+    br_comma_space_br = br_multicomma_to_comma_br.replace(',', ', ')
+    return br_comma_space_br
+
+
 def insert_imports(txt):
     lines = txt.splitlines()
     import_string = '''import pylab as pl
