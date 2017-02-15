@@ -274,3 +274,19 @@ y = impulse(num,den,t)
         result = m2py.convert_bracket_string(input_txt)
         expected = '[1, 2, 1]'
         self.assertEqual(expected, result)
+
+    def test_process_bracket_string(self):
+        input_txt = '''clf
+num = [2 1]
+den = [1 3,    2]
+t = 0:0.1:6
+y = impulse(num,den,t)
+'''
+        result = m2py.process_bracket_string(input_txt)
+        expected = '''clf
+num = [2, 1]
+den = [1, 3, 2]
+t = 0:0.1:6
+y = impulse(num,den,t)
+'''
+        self.assertEqual(expected, result)
