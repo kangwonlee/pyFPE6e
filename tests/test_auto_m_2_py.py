@@ -250,3 +250,9 @@ y = impulse(num,den,t)
         result = pattern.findall(input_txt)
         expected = [' ', '  ']
         self.assertSequenceEqual(expected, result)
+
+    def test_replace_space_with_comma(self):
+        input_txt = '[1 3  2]'
+        result = m2py.replace_space_with_comma(input_txt)
+        expected = '[1,3,2]'
+        self.assertEqual(expected, result)
