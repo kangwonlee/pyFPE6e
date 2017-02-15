@@ -4,6 +4,8 @@
 import pylab as pl
 import scipy.signal as ss
 
+import control
+
 # clear all;
 # close all;
 pl.close('all')
@@ -25,7 +27,7 @@ den = [1, 0, g / L]
 # t=0:.02:10;
 t = pl.arange(0, 10 + 1e-6, 0.02)
 
-sys = ss.TransferFunction(num, den)
+sys = control.tf(num, den)
 # y = step(num,den,t);  % output in radians
 tout, yout = ss.step(sys, T=t)
 # plot(t,r2d*y),grid
