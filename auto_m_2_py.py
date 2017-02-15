@@ -192,6 +192,18 @@ def convert_m_2_py(m_filename):
     write_txt(m_filename_2_py_filename(m_filename), python_script)
 
 
+def get_pylab_name():
+    return 'pylab', 'pl'
+
+
+def get_signal_name():
+    return 'scipy.signal', 'ss'
+
+
+def get_control_name():
+    return 'control', 'control'
+
+
 def main(argv):
     if 1 < len(argv):
         convert_m_2_py(argv[1])
