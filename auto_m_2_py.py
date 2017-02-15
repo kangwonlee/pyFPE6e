@@ -53,6 +53,11 @@ def get_pattern_space():
     return re.compile('\s+')
 
 
+def replace_space_with_comma(txt, new_text=','):
+    pattern = get_pattern_space()
+    return replace_txt_pattern_new(txt, pattern, new_text=new_text)
+
+
 def insert_imports(txt):
     lines = txt.splitlines()
     import_string = '''import pylab as pl
