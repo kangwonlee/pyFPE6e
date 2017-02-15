@@ -15,6 +15,14 @@ def get_pattern_arange():
     return re.compile(r'(?P<start>[\w]+):(?P<interval>[\w]+):(?P<end>[\w]+)')
 
 
+def replace_to_arange(matlab_array_text, pattern=get_pattern_arange()):
+    match = pattern.match(matlab_array_text)
+    match_dict = match.groupdict()
+    new_text = 'arange({start}, {end} + 0.5*({interval}), {interval})'.format(**match_dict)
+    module_new_text = '%s.%s' % ('pl', new_text)
+    return module_new_text
+
+
 def handle_semi_colon(stage_00):
     stage_10 = stage_00.replace(';', '#;\n')
     stage_20 = stage_10.replace('#;\n\n', '#;\n')
