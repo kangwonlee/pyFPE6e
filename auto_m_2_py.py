@@ -183,6 +183,22 @@ def get_control_name():
     return 'control', 'control'
 
 
+def get_function_module():
+    pylab = get_pylab_name()
+    signal = get_signal_name()
+    control = get_control_name()
+    return {
+        'clf': pylab,
+        'plot': pylab,
+        'grid': pylab,
+        'title': pylab,
+        'xlabel': pylab,
+        'ylabel': pylab,
+        'impulse': signal,
+        'nicegrid': control,
+    }
+
+
 def main(argv):
     if 1 < len(argv):
         convert_m_2_py(argv[1])
