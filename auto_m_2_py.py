@@ -179,8 +179,9 @@ def convert_matlab_2_python(matlab_script):
     txt_insert_import = insert_imports(txt_newline)
     txt_equal = handle_equal(txt_insert_import)
     txt_list = process_bracket_string(txt_equal)
+    txt_arange = process_to_arange(txt_list)
 
-    return txt_list
+    return txt_arange
 
 
 def convert_m_2_py(m_filename):
