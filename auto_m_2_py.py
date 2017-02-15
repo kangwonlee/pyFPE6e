@@ -58,6 +58,10 @@ def replace_space_with_comma(txt, new_text=','):
     return replace_txt_pattern_new(txt, pattern, new_text=new_text)
 
 
+def replace_multicomma_to_comma(txt):
+    return re.subn(',+', ',', txt)[0]
+
+
 def insert_imports(txt):
     lines = txt.splitlines()
     import_string = '''import pylab as pl
