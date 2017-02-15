@@ -12,7 +12,7 @@ def get_pattern_semi_colon_followed_by_space():
 
 
 def get_pattern_arange():
-    return re.compile(r'(?P<start>[\w]+):(?P<interval>[\w]+):(?P<end>[\w]+)')
+    return re.compile(r'(?P<start>[\d.\w]+):(?P<interval>[\d.\w]+):(?P<end>[\d.\w]+)')
 
 
 def replace_to_arange(matlab_array_text, pattern=get_pattern_arange()):
