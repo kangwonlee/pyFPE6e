@@ -69,6 +69,20 @@ def convert_bracket_string(br_txt_br):
     return br_comma_space_br
 
 
+def process_bracket_string(txt):
+    start_end_text_tuple = find_bracket_string(txt)
+    i_from = 0
+    new_text = ''
+    for i_start, i_end, text in start_end_text_tuple:
+        new_text += txt[i_from:i_start]
+        br_comma_br = convert_bracket_string(text)
+        new_text += br_comma_br
+        i_from = i_end
+    new_text += txt[i_from:]
+
+    return new_text
+
+
 def insert_imports(txt):
     lines = txt.splitlines()
     import_string = '''import pylab as pl
