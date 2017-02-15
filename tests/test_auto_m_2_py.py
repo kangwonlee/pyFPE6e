@@ -13,6 +13,16 @@ class TestM2Py(unittest.TestCase):
 
         self.assertSequenceEqual(expected, result)
 
+    def test_get_pattern_semi_colon_followed_by_space_comment(self):
+        pattern = m2py.get_pattern_semi_colon_followed_by_space_comment()
+        input_txt = '''figure(); plot(t,y1);         # abc
+xlabel('Time (sec)');   ylabel('\theta (deg)');
+'''
+        result = pattern.findall(input_txt)
+        expected = [';         #']
+
+        self.assertSequenceEqual(expected, result)
+
     def setUp(self):
         self.txt = '''%  Figure 3.6     Feedback Control of Dynamic Systems, 6e
 %                        Franklin, Powell, Emami
