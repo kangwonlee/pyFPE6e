@@ -47,3 +47,7 @@ def pzmap(num, den):
     ax.plot(zeros_angle_rad, zeros_mag, 'o')
     ax.plot(poles_angle_rad, poles_mag, 'x')
     return ax
+
+
+def tf(num, den):
+    return ss.TransferFunction(num, den)
