@@ -50,7 +50,7 @@ nicegrid
     def tearDown(self):
         del self.txt
 
-    def test_handle_semi_colon_followed_by_space(self):
+    def test_handle_semi_colon_followed_by_space_00(self):
         input_txt = '''figure(); plot(t,y1);xlabel('Time (sec)');
 '''
 
@@ -58,6 +58,29 @@ nicegrid
         expected = '''figure()
 plot(t,y1)
 xlabel('Time (sec)')
+'''
+        self.assertEqual(expected, result)
+
+    def test_handle_semi_colon_followed_by_space_10(self):
+        input_txt = '''num=[a];              # form numerator
+den=[1 a];            # form denominator
+t=0:0.01:4;           # form time vector
+sys=tf(num,den);      # form system
+h=impulse(sys,t);     # compute impulse response
+figure();
+plot(t,h);            # plot impulse response
+y=step(sys,t);        # compute step response
+'''
+
+        result = m2py.handle_semi_colon_followed_by_space(input_txt, '\n')
+        expected  = '''num=[a]               # form numerator
+den=[1 a]             # form denominator
+t=0:0.01:4            # form time vector
+sys=tf(num,den)       # form system
+h=impulse(sys,t)      # compute impulse response
+figure()
+plot(t,h)             # plot impulse response
+y=step(sys,t)         # compute step response
 '''
         self.assertEqual(expected, result)
 
