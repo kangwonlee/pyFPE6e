@@ -133,8 +133,9 @@ def convert_matlab_2_python(matlab_script):
     txt_newline = handle_semi_colon_followed_by_space(txt_comment, '\n')
     txt_insert_import = insert_imports(txt_newline)
     txt_equal = handle_equal(txt_insert_import)
+    txt_list = process_bracket_string(txt_equal)
 
-    return txt_equal
+    return txt_list
 
 
 def convert_m_2_py(m_filename):
