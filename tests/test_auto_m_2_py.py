@@ -350,3 +350,9 @@ y = impulse(num,den,t)
                     'interval': 'interval_1',
                     'end':'end2'}
         self.assertSequenceEqual(expected, result)
+
+    def test_replace_to_arange(self):
+        input_txt = 'start_0:interval_1:end2'
+        result = m2py.replace_to_arange(input_txt)
+        expected = 'pl.arange(start_0, end2 + 0.5*(interval_1), interval_1)'
+        self.assertEqual(expected, result)
