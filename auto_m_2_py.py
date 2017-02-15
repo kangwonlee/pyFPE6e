@@ -3,6 +3,10 @@ import sys
 import os
 
 
+def get_pattern_semi_colon_followed_by_space_comment():
+    return re.compile(r';\s*#')
+
+
 def get_pattern_semi_colon_followed_by_space():
     return re.compile(r';\s*')
 
