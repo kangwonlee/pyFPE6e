@@ -243,3 +243,10 @@ y = impulse(num,den,t)
         result = m2py.find_bracket_string(input_text)
         expected = ((10, 15, '[2 1]'), (22, 29, '[1 3 2]'))
         self.assertSequenceEqual(expected, result)
+
+    def test_get_pattern_space(self):
+        input_txt = '[1 3  2]'
+        pattern = m2py.get_pattern_space()
+        result = pattern.findall(input_txt)
+        expected = [' ', '  ']
+        self.assertSequenceEqual(expected, result)
