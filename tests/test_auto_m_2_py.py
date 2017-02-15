@@ -186,27 +186,27 @@ import control
 
 pl.clf()
 k = 1
-num = 1                                 # form numerator
-den = [1, k]                            # form denominator
+num = 1                         # form numerator
+den = [1, k]                     # form denominator
 # sinusoidal input signal
 deltaT = 0.001
 t = pl.arange(0, 10+deltaT*0.5, deltaT) # form time vector
-u = pl.sin(10*(t))                      # form input
+u = pl.sin(10*(t))                 # form input
 sys = ss.TransferFunction(num,den)      # form system
 t_out, y_out, x_out = ss.lsim(sys,u,t)  # linear simulation
 # plot response
-pl.figure();
-pl.plot(t_out, y_out);
-pl.xlabel('Time (sec)');
-pl.ylabel('Output');
+pl.figure()
+pl.plot(t_out, y_out)
+pl.xlabel('Time (sec)')
+pl.ylabel('Output')
 pl.title('Fig. 3.4 (a): transient response')
 pl.show()
 
 pl.hold(True)
-y1 = (10/101) * pl.exp(-t);
-phi = pl.arctan(-10);
-y2 = (1/pl.sqrt(101))*pl.sin(10*t+phi);
-pl.plot(t,y1,t,y2,t,y1+y2);
+y1 = (10/101) * pl.exp(-t)
+phi = pl.arctan(-10)
+y2 = (1/pl.sqrt(101))*pl.sin(10*t+phi)
+pl.plot(t,y1,t,y2,t,y1+y2)
 # grid
 control.nicegrid()
 pl.show()
