@@ -413,3 +413,21 @@ ylabel('h(t)')
 nicegrid
 '''
         self.assertEqual(expected, result)
+
+    def test_get_function_module(self):
+        function_module_dict = m2py.get_function_module()
+        for function_name, module_name in function_module_dict.items():
+            module = my_import(module_name[0])
+            self.assertTrue(hasattr(module, function_name), msg='module %s does not seem to have attribute %s' % (
+                module_name, function_name))
+
+
+def my_import(name):
+    # Clint Miller, Dynamic loading of python modules, StackOverflow, June 04 2009, http://stackoverflow.com/questions/951124/dynamic-loading-of-python-modules
+    # http://stackoverflow.com/questions/301134/dynamic-module-import-in-python
+    # http://stackoverflow.com/questions/13598035/importing-a-module-when-the-module-name-is-in-a-variable
+    mod = __import__(name)
+    components = name.split('.')
+    for comp in components[1:]:
+        mod = getattr(mod, comp)
+    return mod
