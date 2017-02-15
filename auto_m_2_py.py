@@ -1,6 +1,6 @@
+import os
 import re
 import sys
-import os
 
 
 def get_pattern_semi_colon_followed_by_space_comment():
@@ -208,6 +208,7 @@ def get_function_module():
         'bode': control,
         'bodegrid': control,
         'pzmap': control,
+        'tf': control,
     }
 
 
