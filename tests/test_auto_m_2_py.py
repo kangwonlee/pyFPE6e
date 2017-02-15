@@ -351,6 +351,13 @@ y = impulse(num,den,t)
                     'end':'end2'}
         self.assertSequenceEqual(expected, result)
 
+    def test_get_pattern_arange_20(self):
+        pattern = m2py.get_pattern_arange()
+        input_txt = '0:0.5:10]'
+        result = pattern.findall(input_txt)
+        expected = [('0', '0.5', '10')]
+        self.assertSequenceEqual(expected, result)
+
     def test_replace_to_arange(self):
         input_txt = 'start_0:interval_1:end2'
         result = m2py.replace_to_arange(input_txt)
