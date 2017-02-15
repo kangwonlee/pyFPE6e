@@ -363,3 +363,53 @@ y = impulse(num,den,t)
         result = m2py.replace_to_arange(input_txt)
         expected = 'pl.arange(start_0, end2 + 0.5*(interval_1), interval_1)'
         self.assertEqual(expected, result)
+
+    def test_process_to_arange(self):
+        input_txt = '''#  Figure 3.16      Feedback Control of Dynamic Systems, 6e
+#                        Franklin, Powell, Emami
+# script to generate Fig. 3.16
+#  fig3_14.m
+#  Example 3.23
+import pylab as pl
+import scipy.signal as ss
+
+import control
+
+clf
+num = [2, 1]
+den = [1, 3, 2]
+t = 0:0.1:6
+y = impulse(num,den,t)
+plot(t,y,'-')
+grid
+title('Fig. 3.16  Example 3.23 system impulse response.')
+xlabel('Time (sec)')
+ylabel('h(t)')
+# grid
+nicegrid
+'''
+        result = m2py.process_to_arange(input_txt)
+        expected = '''#  Figure 3.16      Feedback Control of Dynamic Systems, 6e
+#                        Franklin, Powell, Emami
+# script to generate Fig. 3.16
+#  fig3_14.m
+#  Example 3.23
+import pylab as pl
+import scipy.signal as ss
+
+import control
+
+clf
+num = [2, 1]
+den = [1, 3, 2]
+t = pl.arange(0, 6 + 0.5*(0.1), 0.1)
+y = impulse(num,den,t)
+plot(t,y,'-')
+grid
+title('Fig. 3.16  Example 3.23 system impulse response.')
+xlabel('Time (sec)')
+ylabel('h(t)')
+# grid
+nicegrid
+'''
+        self.assertEqual(expected, result)
