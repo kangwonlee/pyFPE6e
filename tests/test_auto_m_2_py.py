@@ -1,5 +1,6 @@
 import unittest
 import auto_m_2_py as m2py
+import re
 
 
 class TestM2Py(unittest.TestCase):
@@ -11,7 +12,17 @@ class TestM2Py(unittest.TestCase):
         result = pattern.findall(input_txt)
         expected = ['; ', ';  ', ';   ', ';\n']
 
-        self.assertEqual(expected, result)
+        self.assertSequenceEqual(expected, result)
+
+    def test_get_pattern_semi_colon_followed_by_space_comment(self):
+        pattern = m2py.get_pattern_semi_colon_followed_by_space_comment()
+        input_txt = '''figure(); plot(t,y1);         # abc
+xlabel('Time (sec)');   ylabel('\theta (deg)');
+'''
+        result = pattern.findall(input_txt)
+        expected = [';         #']
+
+        self.assertSequenceEqual(expected, result)
 
     def setUp(self):
         self.txt = '''%  Figure 3.6     Feedback Control of Dynamic Systems, 6e
@@ -50,7 +61,7 @@ nicegrid
     def tearDown(self):
         del self.txt
 
-    def test_handle_semi_colon_followed_by_space(self):
+    def test_handle_semi_colon_followed_by_space_00(self):
         input_txt = '''figure(); plot(t,y1);xlabel('Time (sec)');
 '''
 
@@ -58,6 +69,29 @@ nicegrid
         expected = '''figure()
 plot(t,y1)
 xlabel('Time (sec)')
+'''
+        self.assertEqual(expected, result)
+
+    def test_handle_semi_colon_followed_by_space_10(self):
+        input_txt = '''num=[a];              # form numerator
+den=[1 a];            # form denominator
+t=0:0.01:4;           # form time vector
+sys=tf(num,den);      # form system
+h=impulse(sys,t);     # compute impulse response
+figure();
+plot(t,h);            # plot impulse response
+y=step(sys,t);        # compute step response
+'''
+
+        result = m2py.handle_semi_colon_followed_by_space(input_txt, '\n')
+        expected  = '''num=[a]               # form numerator
+den=[1 a]             # form denominator
+t=0:0.01:4            # form time vector
+sys=tf(num,den)       # form system
+h=impulse(sys,t)      # compute impulse response
+figure()
+plot(t,h)             # plot impulse response
+y=step(sys,t)         # compute step response
 '''
         self.assertEqual(expected, result)
 
@@ -152,27 +186,27 @@ import control
 
 pl.clf()
 k = 1
-num = 1                                 # form numerator
-den = [1, k]                            # form denominator
+num = 1                         # form numerator
+den = [1, k]                     # form denominator
 # sinusoidal input signal
 deltaT = 0.001
 t = pl.arange(0, 10+deltaT*0.5, deltaT) # form time vector
-u = pl.sin(10*(t))                      # form input
+u = pl.sin(10*(t))                 # form input
 sys = ss.TransferFunction(num,den)      # form system
 t_out, y_out, x_out = ss.lsim(sys,u,t)  # linear simulation
 # plot response
-pl.figure();
-pl.plot(t_out, y_out);
-pl.xlabel('Time (sec)');
-pl.ylabel('Output');
+pl.figure()
+pl.plot(t_out, y_out)
+pl.xlabel('Time (sec)')
+pl.ylabel('Output')
 pl.title('Fig. 3.4 (a): transient response')
 pl.show()
 
 pl.hold(True)
-y1 = (10/101) * pl.exp(-t);
-phi = pl.arctan(-10);
-y2 = (1/pl.sqrt(101))*pl.sin(10*t+phi);
-pl.plot(t,y1,t,y2,t,y1+y2);
+y1 = (10/101) * pl.exp(-t)
+phi = pl.arctan(-10)
+y2 = (1/pl.sqrt(101))*pl.sin(10*t+phi)
+pl.plot(t,y1,t,y2,t,y1+y2)
 # grid
 control.nicegrid()
 pl.show()
@@ -290,3 +324,12 @@ t = 0:0.1:6
 y = impulse(num,den,t)
 '''
         self.assertEqual(expected, result)
+
+    def test_apply_replace_to_matches(self):
+        pattern = re.compile('[a-z]')
+        txt = 'abcdefghijklmnopqrstuvw'
+
+        # see if ascii conversion works
+        result = m2py.apply_replace_to_matches(txt, pattern, lambda txt: str('%d,'%ord(txt)))
+        for character, ascii_char in zip(list(txt), result.split(',')):
+            self.assertEqual(ord(character), int(ascii_char))

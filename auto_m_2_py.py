@@ -3,6 +3,10 @@ import sys
 import os
 
 
+def get_pattern_semi_colon_followed_by_space_comment():
+    return re.compile(r';\s*#')
+
+
 def get_pattern_semi_colon_followed_by_space():
     return re.compile(r';\s*')
 
@@ -15,9 +19,41 @@ def handle_semi_colon(stage_00):
     return stage_40
 
 
+def process_semi_colon_followed_by_space_comment(txt):
+    pattern = get_pattern_semi_colon_followed_by_space_comment()
+
+    def replace_function(txt):
+        return txt.replace(';', ' ')
+
+    new_text = apply_replace_to_matches(txt, pattern, replace_function)
+    return new_text
+
+
+def apply_replace_to_matches(txt, pattern, replace_function):
+    """
+
+    :param string txt: source code
+    :param __Regex pattern: regular expression to find
+    :param func replace_function: generate string to replace the pattern
+    :return:
+    """
+    i_from = 0
+    new_text = ''
+    for match in pattern.finditer(txt):
+        i_start, i_end, text = match.start(), match.end(), match.group()
+
+        new_text += txt[i_from:i_start]
+        br_comma_br = replace_function(text)
+        new_text += br_comma_br
+        i_from = i_end
+    new_text += txt[i_from:]
+    return new_text
+
+
 def handle_semi_colon_followed_by_space(txt, new_text='#;\n'):
+    comment_processed_text = process_semi_colon_followed_by_space_comment(txt)
     pattern = get_pattern_semi_colon_followed_by_space()
-    replaced, count = pattern.subn (new_text, txt)
+    replaced, count = pattern.subn (new_text, comment_processed_text)
     return replaced
 
 
@@ -70,17 +106,8 @@ def convert_bracket_string(br_txt_br):
 
 
 def process_bracket_string(txt):
-    start_end_text_tuple = find_bracket_string(txt)
-    i_from = 0
-    new_text = ''
-    for i_start, i_end, text in start_end_text_tuple:
-        new_text += txt[i_from:i_start]
-        br_comma_br = convert_bracket_string(text)
-        new_text += br_comma_br
-        i_from = i_end
-    new_text += txt[i_from:]
-
-    return new_text
+    pattern = get_pattern_bracket_string()
+    return apply_replace_to_matches(txt, pattern, convert_bracket_string)
 
 
 def insert_imports(txt):
