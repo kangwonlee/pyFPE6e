@@ -333,3 +333,20 @@ y = impulse(num,den,t)
         result = m2py.apply_replace_to_matches(txt, pattern, lambda txt: str('%d,'%ord(txt)))
         for character, ascii_char in zip(list(txt), result.split(',')):
             self.assertEqual(ord(character), int(ascii_char))
+
+    def test_get_pattern_arange_00(self):
+        pattern = m2py.get_pattern_arange()
+        input_txt = 'start0:interval_1:end2]'
+        result = pattern.findall(input_txt)
+        expected = [('start0', 'interval_1', 'end2')]
+        self.assertSequenceEqual(expected, result)
+
+    def test_get_pattern_arange_10(self):
+        pattern = m2py.get_pattern_arange()
+        input_txt = 'start_0:interval_1:end2]'
+        match = pattern.match(input_txt)
+        result = match.groupdict()
+        expected = {'start': 'start_0',
+                    'interval': 'interval_1',
+                    'end':'end2'}
+        self.assertSequenceEqual(expected, result)
