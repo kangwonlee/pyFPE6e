@@ -335,14 +335,14 @@ y = impulse(num,den,t)
         for character, ascii_char in zip(list(txt), result.split(',')):
             self.assertEqual(ord(character), int(ascii_char))
 
-    def test_get_pattern_arange_00(self):
+    def test_get_pattern_arange_3args_00(self):
         pattern = m2py.get_pattern_arange_3args()
         input_txt = 'start0:interval_1:end2]'
         result = pattern.findall(input_txt)
         expected = [('start0', 'interval_1', 'end2')]
         self.assertSequenceEqual(expected, result)
 
-    def test_get_pattern_arange_10(self):
+    def test_get_pattern_arange_3args_10(self):
         pattern = m2py.get_pattern_arange_3args()
         input_txt = 'start_0:interval_1:end2]'
         match = pattern.match(input_txt)
@@ -352,7 +352,7 @@ y = impulse(num,den,t)
                     'end': 'end2'}
         self.assertSequenceEqual(expected, result)
 
-    def test_get_pattern_arange_20(self):
+    def test_get_pattern_arange_3args_20(self):
         pattern = m2py.get_pattern_arange_3args()
         input_txt = '0:0.5:10]'
         result = pattern.findall(input_txt)
