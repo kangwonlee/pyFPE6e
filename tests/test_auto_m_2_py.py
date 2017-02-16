@@ -335,6 +335,50 @@ y = impulse(num,den,t)
         for character, ascii_char in zip(list(txt), result.split(',')):
             self.assertEqual(ord(character), int(ascii_char))
 
+    def test_get_pattern_arange_2args_00(self):
+        pattern = m2py.get_pattern_arange_2args()
+        input_txt = 'start_0:end_1]'
+        match = pattern.match(input_txt)
+        self.assertTrue(match)
+        result = match.groupdict()
+        expected = {'start': 'start_0', 'end': 'end_1'}
+        self.assertSequenceEqual(expected, result)
+
+    def test_get_pattern_arange_2args_10(self):
+        pattern = m2py.get_pattern_arange_2args()
+        input_txt = '0:10]'
+        result = pattern.findall(input_txt)
+        expected = [('0', '10')]
+        self.assertSequenceEqual(expected, result)
+
+    def test_get_pattern_arange_2args_02(self):
+        pattern = m2py.get_pattern_arange_2args()
+        input_txt = 'start_0 :end_1]'
+        match = pattern.match(input_txt)
+        self.assertTrue(match)
+        result = match.groupdict()
+        expected = {'start': 'start_0', 'end': 'end_1'}
+        self.assertSequenceEqual(expected, result)
+
+    def test_get_pattern_arange_2args_12(self):
+        pattern = m2py.get_pattern_arange_2args()
+        input_txt = '0: 10]'
+        result = pattern.findall(input_txt)
+        expected = [('0', '10')]
+        self.assertSequenceEqual(expected, result)
+
+    def test_get_pattern_arange_2args_05(self):
+        pattern = m2py.get_pattern_arange_2args()
+        input_txt = 'start_0:interval_1:end2]'
+        match = pattern.match(input_txt)
+        self.assertFalse(match)
+
+    def test_get_pattern_arange_2args_15(self):
+        pattern = m2py.get_pattern_arange_2args()
+        input_txt = '0:0.5:10]'
+        result = pattern.findall(input_txt)
+        self.assertFalse(result)
+
     def test_get_pattern_arange_3args_00(self):
         pattern = m2py.get_pattern_arange_3args()
         input_txt = 'start0:interval_1:end2]'
