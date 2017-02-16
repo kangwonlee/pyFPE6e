@@ -403,13 +403,13 @@ y = impulse(num,den,t)
         expected = [('0', '0.5', '10')]
         self.assertSequenceEqual(expected, result)
 
-    def test_replace_to_arange(self):
+    def test_replace_to_arange_3args(self):
         input_txt = 'start_0:interval_1:end2'
         result = m2py.replace_to_arange_3args(input_txt)
         expected = 'pl.arange(start_0, end2 + 0.5*(interval_1), interval_1)'
         self.assertEqual(expected, result)
 
-    def test_process_to_arange(self):
+    def test_process_to_arange_3args(self):
         input_txt = '''#  Figure 3.16      Feedback Control of Dynamic Systems, 6e
 #                        Franklin, Powell, Emami
 # script to generate Fig. 3.16
