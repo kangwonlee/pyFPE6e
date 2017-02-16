@@ -11,6 +11,10 @@ def get_pattern_semi_colon_followed_by_space():
     return re.compile(r';\s*')
 
 
+def get_pattern_arange_2args():
+    return re.compile(r'(?P<start>[\d.\w]+):(?P<end>[\d.\w]+)')
+
+
 def get_pattern_arange_3args():
     return re.compile(r'(?P<start>[\d.\w]+):(?P<interval>[\d.\w]+):(?P<end>[\d.\w]+)')
 
