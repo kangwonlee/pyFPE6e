@@ -406,7 +406,7 @@ y = impulse(num,den,t)
     def test_replace_to_arange_3args(self):
         input_txt = 'start_0:interval_1:end2'
         result = m2py.replace_to_arange_3args(input_txt)
-        expected = 'pl.arange(start_0, end2 + 0.5*(interval_1), interval_1)'
+        expected = 'pl.arange(start_0, end2 + 0.5 * (interval_1), interval_1)'
         self.assertEqual(expected, result)
 
     def test_process_to_arange_3args(self):
@@ -447,7 +447,7 @@ import control
 clf
 num = [2, 1]
 den = [1, 3, 2]
-t = pl.arange(0, 6 + 0.5*(0.1), 0.1)
+t = pl.arange(0, 6 + 0.5 * (0.1), 0.1)
 y = impulse(num,den,t)
 plot(t,y,'-')
 grid
