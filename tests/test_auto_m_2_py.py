@@ -403,10 +403,28 @@ y = impulse(num,den,t)
         expected = [('0', '0.5', '10')]
         self.assertSequenceEqual(expected, result)
 
+    def test_replace_to_arange_2args(self):
+        input_txt = 'start_0:end_1'
+        result = m2py.replace_to_arange_2args(input_txt)
+        expected = 'pl.arange(start_0, end_1)'
+        self.assertEqual(expected, result)
+
     def test_replace_to_arange_3args(self):
         input_txt = 'start_0:interval_1:end2'
         result = m2py.replace_to_arange_3args(input_txt)
         expected = 'pl.arange(start_0, end2 + 0.5 * (interval_1), interval_1)'
+        self.assertEqual(expected, result)
+
+    def test_process_to_arange_2args(self):
+        input_txt = '''figure();
+ii=[9001:10001];
+plot(t(ii),y(ii),t(ii),u(ii));
+'''
+        result = m2py.process_to_arange_2args(input_txt)
+        expected = '''figure();
+ii = pl.arange(9001, 10001)
+plot(t(ii),y(ii),t(ii),u(ii));
+'''
         self.assertEqual(expected, result)
 
     def test_process_to_arange_3args(self):
