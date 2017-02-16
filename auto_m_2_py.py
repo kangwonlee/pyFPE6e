@@ -23,7 +23,7 @@ def replace_to_arange(matlab_array_text, pattern=get_pattern_arange_3args()):
     return module_new_text
 
 
-def process_to_arange(txt):
+def process_to_arange_3args(txt):
     pattern = get_pattern_arange_3args()
     new_text = apply_replace_to_matches(txt, pattern, replace_to_arange)
     return new_text
@@ -181,7 +181,7 @@ def convert_matlab_2_python(matlab_script):
     txt_insert_import = insert_imports(txt_newline)
     txt_equal = handle_equal(txt_insert_import)
     txt_list = process_bracket_string(txt_equal)
-    txt_arange = process_to_arange(txt_list)
+    txt_arange = process_to_arange_3args(txt_list)
 
     return txt_arange
 

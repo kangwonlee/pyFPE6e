@@ -389,7 +389,7 @@ ylabel('h(t)')
 # grid
 nicegrid
 '''
-        result = m2py.process_to_arange(input_txt)
+        result = m2py.process_to_arange_3args(input_txt)
         expected = '''#  Figure 3.16      Feedback Control of Dynamic Systems, 6e
 #                        Franklin, Powell, Emami
 # script to generate Fig. 3.16
