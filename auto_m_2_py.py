@@ -15,7 +15,7 @@ def get_pattern_arange_3args():
     return re.compile(r'(?P<start>[\d.\w]+):(?P<interval>[\d.\w]+):(?P<end>[\d.\w]+)')
 
 
-def replace_to_arange(matlab_array_text, pattern=get_pattern_arange_3args()):
+def replace_to_arange_3args(matlab_array_text, pattern=get_pattern_arange_3args()):
     match = pattern.match(matlab_array_text)
     match_dict = match.groupdict()
     new_text = 'arange({start}, {end} + 0.5*({interval}), {interval})'.format(**match_dict)
@@ -25,7 +25,7 @@ def replace_to_arange(matlab_array_text, pattern=get_pattern_arange_3args()):
 
 def process_to_arange_3args(txt):
     pattern = get_pattern_arange_3args()
-    new_text = apply_replace_to_matches(txt, pattern, replace_to_arange)
+    new_text = apply_replace_to_matches(txt, pattern, replace_to_arange_3args)
     return new_text
 
 
