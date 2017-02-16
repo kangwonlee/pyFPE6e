@@ -23,7 +23,7 @@ def get_pattern_arange_3args():
 def replace_to_arange_3args(matlab_array_text, pattern=get_pattern_arange_3args()):
     match = pattern.match(matlab_array_text)
     match_dict = match.groupdict()
-    new_text = 'arange({start}, {end} + 0.5*({interval}), {interval})'.format(**match_dict)
+    new_text = 'arange({start}, {end} + 0.5 * ({interval}), {interval})'.format(**match_dict)
     module_new_text = '%s.%s' % ('pl', new_text)
     return module_new_text
 
