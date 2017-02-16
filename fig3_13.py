@@ -9,12 +9,12 @@ import scipy.signal as ss
 import control
 
 pl.clf()
-einv = 1/pl.exp(1)
+einv = 1 / pl.exp(1)
 num = 1
 den = [1, 1]
 t = pl.arange(0, 4 + 0.05 * 0.5, 0.05)
 sys0 = ss.TransferFunction(num, den)
-tout, yout = ss.impulse(sys0,T=t)
+tout, yout = ss.impulse(sys0, T=t)
 
 # define some lines for the plot
 tl = [0, 1]
@@ -40,11 +40,11 @@ pl.show()
 
 # Figure 3.13 (b)
 a = 1
-num = [a]              # form numerator
-den = [1, a]            # form denominator
+num = [a]  # form numerator
+den = [1, a]  # form denominator
 t = pl.arange(0, 4 + 0.01 * 0.5, 0.01)  # form time vector
 sys = ss.TransferFunction(num, den)  # form system
-tout_sys_impulse, yout_sys_impulse = ss.impulse(sys,T=t)     # compute impulse response
+tout_sys_impulse, yout_sys_impulse = ss.impulse(sys, T=t)  # compute impulse response
 pl.figure()
 pl.plot(tout_sys_impulse, yout_sys_impulse)  # plot impulse response
 tout_sys_step, yout_sys_step = ss.step(sys, T=t)  # compute step response

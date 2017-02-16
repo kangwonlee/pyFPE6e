@@ -84,7 +84,7 @@ y=step(sys,t);        # compute step response
 '''
 
         result = m2py.handle_semi_colon_followed_by_space(input_txt, '\n')
-        expected  = '''num=[a]               # form numerator
+        expected = '''num=[a]               # form numerator
 den=[1 a]             # form denominator
 t=0:0.01:4            # form time vector
 sys=tf(num,den)       # form system
@@ -330,7 +330,7 @@ y = impulse(num,den,t)
         txt = 'abcdefghijklmnopqrstuvw'
 
         # see if ascii conversion works
-        result = m2py.apply_replace_to_matches(txt, pattern, lambda txt: str('%d,'%ord(txt)))
+        result = m2py.apply_replace_to_matches(txt, pattern, lambda txt: str('%d,' % ord(txt)))
         for character, ascii_char in zip(list(txt), result.split(',')):
             self.assertEqual(ord(character), int(ascii_char))
 
@@ -348,7 +348,7 @@ y = impulse(num,den,t)
         result = match.groupdict()
         expected = {'start': 'start_0',
                     'interval': 'interval_1',
-                    'end':'end2'}
+                    'end': 'end2'}
         self.assertSequenceEqual(expected, result)
 
     def test_get_pattern_arange_20(self):
