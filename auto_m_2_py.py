@@ -20,12 +20,26 @@ def get_pattern_arange_3args():
     return re.compile(r'(?P<start>[\d.\w]+):(?P<interval>[\d.\w]+):(?P<end>[\d.\w]+)')
 
 
+def replace_to_arange_2args(matlab_array_text, pattern=get_pattern_arange_2args()):
+    match = pattern.match(matlab_array_text)
+    match_dict = match.groupdict()
+    new_text = 'arange({start}, {end})'.format(**match_dict)
+    module_new_text = '%s.%s' % ('pl', new_text)
+    return module_new_text
+
+
 def replace_to_arange_3args(matlab_array_text, pattern=get_pattern_arange_3args()):
     match = pattern.match(matlab_array_text)
     match_dict = match.groupdict()
     new_text = 'arange({start}, {end} + 0.5 * ({interval}), {interval})'.format(**match_dict)
     module_new_text = '%s.%s' % ('pl', new_text)
     return module_new_text
+
+
+def process_to_arange_2args(txt):
+    pattern = get_pattern_arange_2args()
+    new_text = apply_replace_to_matches(txt, pattern, replace_to_arange_2args)
+    return new_text
 
 
 def process_to_arange_3args(txt):
@@ -186,7 +200,8 @@ def convert_matlab_2_python(matlab_script):
     txt_insert_import = insert_imports(txt_newline)
     txt_equal = handle_equal(txt_insert_import)
     txt_list = process_bracket_string(txt_equal)
-    txt_arange = process_to_arange_3args(txt_list)
+    txt_arange_3args = process_to_arange_3args(txt_list)
+    txt_arange = process_to_arange_2args(txt_arange_3args)
 
     return txt_arange
 
