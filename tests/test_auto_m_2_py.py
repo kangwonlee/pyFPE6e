@@ -342,7 +342,9 @@ y = impulse(num,den,t)
         self.assertTrue(match)
         result = match.groupdict()
         expected = {'start': 'start_0', 'end': 'end_1'}
-        self.assertSequenceEqual(expected, result)
+        self.assertTrue('start' in result, msg='result = %s' % result)
+        self.assertTrue('end' in result, msg='result = %s' % result)
+        self.assertSequenceEqual(expected, result, msg='result = %s' % result)
 
     def test_get_pattern_arange_2args_10(self):
         pattern = m2py.get_pattern_arange_2args()
