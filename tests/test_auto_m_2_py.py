@@ -1,6 +1,7 @@
-import unittest
-import auto_m_2_py as m2py
 import re
+import unittest
+
+import auto_m_2_py as m2py
 
 
 class TestM2Py(unittest.TestCase):
@@ -335,7 +336,7 @@ y = impulse(num,den,t)
             self.assertEqual(ord(character), int(ascii_char))
 
     def test_get_function_module(self):
-        function_module_dict = m2py.get_function_module()
+        function_module_dict = m2py.get_function_module_dict()
         for function_name, module_name in function_module_dict.items():
             module = my_import(module_name[0])
             self.assertTrue(hasattr(module, function_name), msg='module %s does not seem to have attribute %s' % (

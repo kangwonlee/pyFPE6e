@@ -116,9 +116,9 @@ def insert_imports(txt):
 %s
 
 %s
-''' % (get_import_string(*get_pylab_name()) ,
-       get_import_string(*get_signal_name()),
-       get_import_string(*get_control_name()))
+''' % (get_import_string(*get_pylab_module_name()),
+       get_import_string(*get_signal_module_name()),
+       get_import_string(*get_control_module_name()))
 
     # locate first line after header comment
 
@@ -173,7 +173,7 @@ def convert_m_2_py(m_filename):
     write_txt(m_filename_2_py_filename(m_filename), python_script)
 
 
-def get_pylab_name():
+def get_pylab_module_name():
     return 'pylab', 'pl'
 
 
@@ -196,18 +196,18 @@ def get_import_string(module, name=None):
     return result
 
 
-def get_signal_name():
+def get_signal_module_name():
     return 'scipy.signal', 'ss'
 
 
-def get_control_name():
+def get_control_module_name():
     return 'control', 'control'
 
 
-def get_function_module():
-    pylab = get_pylab_name()
-    signal = get_signal_name()
-    control = get_control_name()
+def get_function_module_dict():
+    pylab = get_pylab_module_name()
+    signal = get_signal_module_name()
+    control = get_control_module_name()
     return {
         'clf': pylab,
         'plot': pylab,
