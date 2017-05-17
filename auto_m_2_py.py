@@ -136,7 +136,12 @@ def convert_bracket_string(br_txt_br):
 
 def get_pattern_function_names():
     # Regular expression to match function name and all arguments in Python, Regular expression to match function name and all arguments in Python, Stackoverflow.com, April 15 2012, [Online] Available: http://stackoverflow.com/questions/10164137/regular-expression-to-match-function-name-and-all-arguments-in-python
-    return re.compile(r"(?P<function>\w+)\s?\((?P<arg>(?P<args>\w+(,\s?)?)+)\)")
+    return re.compile(r"=(?P<function_name>.+?)\(?P<arguments>.+?\)")
+
+
+def replace_functions(txt_mat):
+    function_module_dict = get_function_module_dict()
+
 
 
 def process_bracket_string(txt):
@@ -203,6 +208,7 @@ def convert_matlab_2_python(matlab_script):
     txt_insert_import = insert_imports(txt_newline)
     txt_equal = handle_equal(txt_insert_import)
     txt_list = process_bracket_string(txt_equal)
+    txt_function = replace_functions(txt_list)
 
     return txt_list
 
