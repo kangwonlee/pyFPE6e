@@ -348,6 +348,7 @@ y = impulse(num,den,t)
         with self.assertRaises(ValueError) as cm:
             m2py.get_import_string('a')
 
+
 def my_import(name):
     # Clint Miller, Dynamic loading of python modules, StackOverflow, June 04 2009, http://stackoverflow.com/questions/951124/dynamic-loading-of-python-modules
     # http://stackoverflow.com/questions/301134/dynamic-module-import-in-python
