@@ -341,6 +341,11 @@ y = impulse(num,den,t)
             self.assertTrue(hasattr(module, function_name), msg='module %s does not seem to have attribute %s' % (
                 module_name, function_name))
 
+    def test_get_import_string(self):
+        self.assertEqual('import os as operating_system', m2py.get_import_string('os', 'operating_system'))
+        self.assertEqual('import os', m2py.get_import_string('os'))
+        with self.assertRaises(ValueError) as cm:
+            m2py.get_import_string('a')
 
 def my_import(name):
     # Clint Miller, Dynamic loading of python modules, StackOverflow, June 04 2009, http://stackoverflow.com/questions/951124/dynamic-loading-of-python-modules
