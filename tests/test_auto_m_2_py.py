@@ -369,7 +369,10 @@ y = impulse(num,den,t)
             ('ylabel', '\theta (deg)'),
             ('title', 'Fig. 3.6(b): Satellite attitude'),
         ]
+        backup = self.maxDiff
+        self.maxDiff = None
         self.assertSequenceEqual(expected_name_args_list, result_list)
+        self.maxDiff = backup
 
 
 def my_import(module_full_name):
