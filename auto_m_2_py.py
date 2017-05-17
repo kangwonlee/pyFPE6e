@@ -134,6 +134,11 @@ def convert_bracket_string(br_txt_br):
     return br_comma_space_br
 
 
+def get_pattern_function_names():
+    # Regular expression to match function name and all arguments in Python, Regular expression to match function name and all arguments in Python, Stackoverflow.com, April 15 2012, [Online] Available: http://stackoverflow.com/questions/10164137/regular-expression-to-match-function-name-and-all-arguments-in-python
+    return re.compile(r"(?P<function>\w+)\s?\((?P<arg>(?P<args>\w+(,\s?)?)+)\)")
+
+
 def process_bracket_string(txt):
     pattern = get_pattern_bracket_string()
     return apply_replace_to_matches(txt, pattern, convert_bracket_string)

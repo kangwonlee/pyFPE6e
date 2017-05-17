@@ -348,6 +348,29 @@ y = impulse(num,den,t)
         with self.assertRaises(ValueError) as cm:
             m2py.get_import_string('a')
 
+    def test_get_pattern_function_names(self):
+        pattern = m2py.get_pattern_function_names()
+        result_list = pattern.findall(self.txt)
+        expected_name_args_list = [
+            ('tf', 'numG','denG'),
+            ('zeros', '1','500'),
+            ('ones', '1', '10'),
+            ('zeros', '1', '491'),
+            ('lsim', 'sysG' ,'u1', 't',),
+            ('figure', ),
+            ('plot', 't','u1'),
+            ('xlabel', 'Time (sec)'),
+            ('ylabel', 'Thrust Fc'),
+            ('title', 'Fig. 3.6(a): Thrust input'),
+            ('axis', '[0 10 0 26]'),
+            ('figure',),
+            ('plot', 't', 'y1'),
+            ('xlabel', 'Time (sec)'),
+            ('ylabel', '\theta (deg)'),
+            ('title', 'Fig. 3.6(b): Satellite attitude'),
+        ]
+        self.assertSequenceEqual(expected_name_args_list, result_list)
+
 
 def my_import(module_full_name):
     # Clint Miller, Dynamic loading of python modules, StackOverflow, June 04 2009, http://stackoverflow.com/questions/951124/dynamic-loading-of-python-modules
