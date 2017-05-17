@@ -369,6 +369,7 @@ y = impulse(num,den,t)
             ('ylabel', '\theta (deg)'),
             ('title', 'Fig. 3.6(b): Satellite attitude'),
         ]
+        [print(diff) for diff in zip(expected_name_args_list, result_list)]
         backup = self.maxDiff
         self.maxDiff = None
         self.assertSequenceEqual(expected_name_args_list, result_list)
