@@ -79,6 +79,15 @@ def replace_txt_pattern_new(txt, pattern, new_text):
 
 
 def handle_equal(txt, new_text=' = '):
+    """
+    x=2
+    ->
+    x = 2
+    
+    :param txt: 
+    :param new_text: 
+    :return: 
+    """
     pattern = get_pattern_space_equal_space()
     return replace_txt_pattern_new(txt, pattern, new_text)
 
