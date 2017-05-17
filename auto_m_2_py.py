@@ -112,6 +112,13 @@ def get_pattern_space():
 
 
 def replace_space_with_comma(txt, new_text=','):
+    """
+    '[1 3  2]' -> '[1,3,2]'
+        
+    :param str txt: 
+    :param str new_text: 
+    :return: 
+    """
     pattern = get_pattern_space()
     return replace_txt_pattern_new(txt, pattern, new_text=new_text)
 
