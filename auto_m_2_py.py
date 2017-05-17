@@ -175,6 +175,25 @@ def get_pylab_name():
     return 'pylab', 'pl'
 
 
+def get_import_string(module, name=None):
+    try:
+        __import__(module)
+        b_module_importable = True
+    except ModuleNotFoundError as e:
+        b_module_importable = False
+
+    if not b_module_importable:
+        raise ValueError('module = %r, name = %r' % (module, name))
+    elif (module == name) or (name is None):
+        result = "import %s" % module
+    elif module and name:
+        result = "import %s as %s" % (module, name)
+    else:
+        raise ValueError('module = %r, name = %r' % (module, name))
+
+    return result
+
+
 def get_signal_name():
     return 'scipy.signal', 'ss'
 
