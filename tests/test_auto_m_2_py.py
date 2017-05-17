@@ -349,12 +349,12 @@ y = impulse(num,den,t)
             m2py.get_import_string('a')
 
 
-def my_import(name):
+def my_import(module_full_name):
     # Clint Miller, Dynamic loading of python modules, StackOverflow, June 04 2009, http://stackoverflow.com/questions/951124/dynamic-loading-of-python-modules
     # http://stackoverflow.com/questions/301134/dynamic-module-import-in-python
     # http://stackoverflow.com/questions/13598035/importing-a-module-when-the-module-name-is-in-a-variable
-    mod = __import__(name)
-    components = name.split('.')
+    mod = __import__(module_full_name)
+    components = module_full_name.split('.')
     for comp in components[1:]:
         mod = getattr(mod, comp)
     return mod
