@@ -53,7 +53,7 @@ ff=180/pi;
 y1=ff*y1;
 figure(); plot(t,y1);xlabel('Time (sec)');
 ylabel('\theta (deg)');
-title('Fig. 3.6(b): Satellite attitude')
+title('Fig. 3.6(b): Satellite attitude pulse(t)')
 % grid
 nicegrid
 
@@ -168,7 +168,7 @@ ii=[9001:10001];
 plot(t(ii),y(ii),t(ii),u(ii));
 xlabel('Time (sec)');
 ylabel('Output, input');
-title('Fig. 3.4 (b): Steady-state response');
+title(''Fig. 3.4 (b): Steady-state response to pulse(t)'');
 text(9.4,0.65,'u(t)');
 text(9.24,0.12,'y(t)');
 % grid
@@ -220,7 +220,7 @@ pl.plot(t_out[ii], y_out[ii],
 
 pl.xlabel('Time (sec)')
 pl.ylabel('Output, input')
-pl.title('Fig. 3.4 (b): Steady-state response')
+pl.title('Fig. 3.4 (b): Steady-state response to pulse(t)')
 pl.text(9.4,0.65,'u(t)')
 pl.text(9.24,0.12,'y(t)')
 # grid
@@ -367,7 +367,7 @@ y = impulse(num,den,t)
             ('plot', 't', 'y1'),
             ('xlabel', 'Time (sec)'),
             ('ylabel', '\theta (deg)'),
-            ('title', 'Fig. 3.6(b): Satellite attitude'),
+            ('title', 'Fig. 3.4 (b): Steady-state response to pulse(t)'),
         ]
         [print(diff) for diff in zip(expected_name_args_list, result_list)]
         backup = self.maxDiff
