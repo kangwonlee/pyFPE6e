@@ -93,6 +93,7 @@ def handle_equal(txt, new_text=' = '):
 
 
 def get_pattern_bracket_string():
+    # to find arrays within brackets
     return re.compile(r'\[(.+)?\]')
 #    return re.compile(r'\[[a-zA-Z0-9_]+(\s+)\]')
 
