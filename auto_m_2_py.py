@@ -140,6 +140,12 @@ def process_bracket_string(txt):
 
 
 def insert_imports(txt):
+    """
+    After header comment, add lines importing modules
+    
+    :param str txt: 
+    :return: 
+    """
     lines = txt.splitlines()
     import_string = '''%s
 %s
