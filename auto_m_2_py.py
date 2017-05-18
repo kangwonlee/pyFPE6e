@@ -137,7 +137,7 @@ def convert_bracket_string(br_txt_br):
 def get_pattern_function_names():
     # Regular expression to match function name and all arguments in Python, Regular expression to match function name and all arguments in Python, Stackoverflow.com, April 15 2012, [Online] Available: http://stackoverflow.com/questions/10164137/regular-expression-to-match-function-name-and-all-arguments-in-python
     # RegEx matching variable names but not string values, Stackoverflow.com, Jan 17 2013, [Online] Available: http://stackoverflow.com/questions/14388514/regex-matching-variable-names-but-not-string-values
-    return re.compile(r"(?P<function_name>[A-Za-z]\w*)\((?P<arguments>.*?)\)")
+    return re.compile(r"(?P<function_name>[A-Za-z]\w*)\((?P<arguments>.*?),*\)")
 
 
 def replace_functions(txt_mat):
